@@ -2,7 +2,7 @@
 #include <cmath> 
 #include <Windows.h>
 
-#define ID_TIMER 1
+#define ID_TIMER 2
 
 using namespace std;
 
@@ -65,7 +65,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         yPixel = GetDeviceCaps(hdc, ASPECTY);//36
         ReleaseDC(hwnd, hdc);
  
-        SetTimer(hwnd, ID_TIMER, 50, NULL);
+        SetTimer(hwnd, ID_TIMER, 0, NULL);
         return 0;
     case WM_SIZE:
         //客户区中心的坐标
