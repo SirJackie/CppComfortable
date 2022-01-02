@@ -1,43 +1,32 @@
-//使用IMAGE——抓图，绘画到IMAGE，IMAGE到屏幕
 #include <graphics.h>
-
-//IMAGE对象相当于一个绘图板，而同时也可以作为图片画到其它IMAGE上
-//它是一个非常灵活的对象，复杂的绘图都要借助IMAGE，以便更好地保存和输出图像
 
 int main()
 {
+	PIMAGE img;
+	
 	initgraph(640, 480);
 	
-	setcolor(EGERGB(255, 255, 255));
-	setfillcolor(EGERGB(255, 0, 0));
+	//先随便画一些东西
+	setcolor(EGERGB(0xFF, 0xFF, 0x0));
+	setfillcolor(EGERGB(0xFF, 0x0, 0x80));
+	fillellipse(50, 50, 50, 50);
 	
-	fillcircle(100, 100, 100);
+	img = newimage();
+	getimage(img, 0, 0, 160, 120);
 	
-	PIMAGE img = newimage();
-	getimage(img, 0, 0, 80, 60);
+	//先画一个非黑色背景，以便于比较
+	setbkcolor(EGERGB(0x80, 0x80, 0x80));
+	cleardevice();
 	
-	setfillcolor(BLACK);
-	bar(0, 0, getwidth(), getheight());
+	//四种贴图比较
+	putimage(0, 0, img);
+	putimage_alphablend(NULL, img, 160, 0, 0x80); //半透明度为0x80
+	putimage_transparent(NULL, img, 0, 80, BLACK);        //透明贴图，关键色为BLACK，源图为这个颜色的地方会被忽略
+	putimage_alphatransparent(NULL, img, 160, 80, BLACK, 0xA0); //同时使用透明和半透明
 	
-	setfillcolor(RED, img);
-	bar(10, 10, 20, 20, img);
-	
-//	putimage(0, 0, img);
-//	putimage(80, 0, img);
-	
-	for (int y = 0; y < 8; ++y)
-	{
-		for (int x = 0; x < 8; ++x)
-		{
-			//把img整个，拉伸画在指定的矩形里
-			//需要指定目标矩形，源矩形
-			//源矩形参数不能忽略，否则会和其它非拉伸功能的贴图函数混淆
-			putimage(x * 160, y * 120, 160, 120, img, 0, 0, 80, 60);
-		}
-	}
+	getch();
 	
 	delimage(img);
 	
-	getch();
 	closegraph();
 }
