@@ -1,37 +1,29 @@
+//使用IMAGE——抓图，绘画到IMAGE，IMAGE到屏幕
 #include <graphics.h>
+
+//IMAGE对象相当于一个绘图板，而同时也可以作为图片画到其它IMAGE上
+//它是一个非常灵活的对象，复杂的绘图都要借助IMAGE，以便更好地保存和输出图像
 
 int main()
 {
-	initgraph(1024, 576);
+	initgraph(640, 480);
 	
-	setviewport(150, 150, 300, 300, 1);
-	setviewport(0, 0, getwidth(), getheight(), 1);
-
-	//先画一个矩形，以便于看出背景色的问题
-	setfillcolor(EGERGB(0x0, 0x80, 0x80));
-	bar(10, 10, 1014, 566);
+	setcolor(EGERGB(255, 255, 255));
+	setfillcolor(EGERGB(255, 0, 0));
 	
-	//文字颜色
-	setcolor(EGERGB(0x0, 0xFF, 0x0));
+	fillcircle(100, 100, 100);
 	
-	//文字背景色（注意setbkcolor函数也会同时改变文字背景色）
-	setfontbkcolor(EGERGB(0x80, 0x00, 0x80));
+	PIMAGE img = newimage();
+	getimage(img, 0, 0, 80, 60);
 	
-	//设置字体，第一个参数是字体的高度（像素），第二个参数是字体的宽度，第二个参数如果为0，就使用默认比例值
-	//如果高度为12，即相当于小五号字，或者9磅字，实际的换算就自己完成吧
-	setfont(40, 0, "宋体");
+	setfillcolor(BLACK);
+	bar(0, 0, getwidth(), getheight());
 	
-	//写文字，注意：outtextxy不支持\t \n这类格式化用的特殊字符，这类字符会被忽略
-	//要使用特殊格式化字符请用outtextrect
-	outtextxy(30, 30, "Hello EGE 中文支持");
-	outtextrect(30, 80, 200, 100, "Hello EGE\n中文支持");
+	setfillcolor(RED, img);
+	bar(10, 10, 20, 20, img);
+	putimage(0, 0, img);
+	putimage(80, 0, img);
 	
-	//设置文字背景填充方式为透明，默认为OPAQUE不透明
-	setbkmode(TRANSPARENT);
-	setbkcolor(RED);
-	outtextxy(30, 170, "透明背景文字");
-
 	getch();
 	closegraph();
 }
-
