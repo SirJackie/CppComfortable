@@ -1,19 +1,20 @@
 [Project]
-FileName = CppComfortable.dev
-Name = CppComfortable
-Type = 0
+filename = CppComfortable.dev
+name = CppComfortable
+UnitCount = 1
+Type = 1
 Ver = 3
 ObjFiles = 
 Includes = 
 Libs = 
-PrivateResource = 
+PrivateResource = CppComfortable_private.rc
 ResourceIncludes = 
 MakeIncludes = 
-Compiler = -I include/ -L lib/ -l EasyX
-CppCompiler = -I include/ -L lib/ -l EasyX
-Linker = 
+Compiler = 
+CppCompiler = 
+Linker = -I include/ -L lib/ -lgraphics64  -lgdiplus -luuid -lmsimg32 -lgdi32 -limm32 -lole32 -loleaut32 -lwinmm
 IsCpp = 1
-Icon = 
+Icon = CppComfortable.ico
 ExeOutput = 
 ObjectOutput = 
 LogOutput = 
@@ -23,40 +24,19 @@ OverrideOutputName =
 HostApplication = 
 UseCustomMakefile = 0
 CustomMakefile = 
+UsePrecompiledHeader = 0
+PrecompiledHeader = 
 CommandLine = 
 Folders = 
 IncludeVersionInfo = 0
 SupportXPThemes = 0
-CompilerSet = 0
-CompilerSettings = 0000000000000000000000000
-UnitCount = 1
-UsePrecompiledHeader = 0
-PrecompiledHeader = 
+CompilerSet = 1
 CompilerSetType = 0
-StaticLink = 1
+CompilerSettings = 0000000000110000000001001
+StaticLink = 0
 AddCharset = 1
 Encoding = AUTO
 UseUTF8 = 0
-
-
-[VersionInfo]
-Major = 1
-Minor = 0
-Release = 0
-Build = 0
-LanguageID = 1033
-CharsetID = 1252
-CompanyName = 
-FileVersion = 
-FileDescription = Developed using the Dev-C++ IDE
-InternalName = 
-LegalCopyright = 
-LegalTrademarks = 
-OriginalFilename = 
-ProductName = 
-ProductVersion = 
-AutoIncBuildNr = 0
-SyncProduct = 1
 
 
 [Unit1]
@@ -68,3 +48,25 @@ Link = 1
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[VersionInfo]
+Major = 1
+Minor = 0
+Release = 0
+Build = 0
+LanguageID = 1033
+CharsetID = 1252
+CompanyName = 
+FileVersion = 
+FileDescription = Developed using the Red Panda Dev-C++ IDE
+InternalName = 
+LegalCopyright = 
+LegalTrademarks = 
+OriginalFilename = 
+ProductName = 
+ProductVersion = 
+AutoIncBuildNr = 0
+SyncProduct = 1
