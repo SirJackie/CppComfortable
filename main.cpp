@@ -24,6 +24,8 @@ int main()
 	putimage(0, 0, img);
 	putimage(80, 0, img);
 	
+	delimage(img);
+	
 	getch();
 	closegraph();
 }
