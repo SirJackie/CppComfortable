@@ -21,8 +21,20 @@ int main()
 	
 	setfillcolor(RED, img);
 	bar(10, 10, 20, 20, img);
-	putimage(0, 0, img);
-	putimage(80, 0, img);
+	
+//	putimage(0, 0, img);
+//	putimage(80, 0, img);
+	
+	for (int y = 0; y < 8; ++y)
+	{
+		for (int x = 0; x < 8; ++x)
+		{
+			//把img整个，拉伸画在指定的矩形里
+			//需要指定目标矩形，源矩形
+			//源矩形参数不能忽略，否则会和其它非拉伸功能的贴图函数混淆
+			putimage(x * 160, y * 120, 160, 120, img, 0, 0, 80, 60);
+		}
+	}
 	
 	delimage(img);
 	
