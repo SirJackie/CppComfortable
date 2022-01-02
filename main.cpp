@@ -3,6 +3,9 @@
 int main()
 {
 	initgraph(1024, 576);
+	
+	setviewport(150, 150, 300, 300, 1);
+	setviewport(0, 0, getwidth(), getheight(), 1);
 
 	//先画一个矩形，以便于看出背景色的问题
 	setfillcolor(EGERGB(0x0, 0x80, 0x80));
