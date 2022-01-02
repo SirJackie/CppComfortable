@@ -1,32 +1,23 @@
 #include <graphics.h>
 
+void DrawRect(int x0, int y0, int x1, int y1, int color, color_t* buffer, int width=getwidth()){
+	for(int y = y0; y < y1; y++){
+		for(int x = x0; x < x1; x++){
+			buffer[y * width + x] = color;
+		}
+	}
+}
+
 int main()
-{
-	PIMAGE img;
+{	
+	initgraph(1024, 500);
 	
-	initgraph(640, 480);
-	
-	//先随便画一些东西
-	setcolor(EGERGB(0xFF, 0xFF, 0x0));
-	setfillcolor(EGERGB(0xFF, 0x0, 0x80));
-	fillellipse(50, 50, 50, 50);
-	
-	img = newimage();
-	getimage(img, 0, 0, 160, 120);
-	
-	//先画一个非黑色背景，以便于比较
-	setbkcolor(EGERGB(0x80, 0x80, 0x80));
-	cleardevice();
-	
-	//四种贴图比较
+	PIMAGE img = newimage(1024, 500);
+	color_t* buffer = getbuffer(img);
+	DrawRect(10, 10, 100, 100, RED, buffer);
 	putimage(0, 0, img);
-	putimage_alphablend(NULL, img, 160, 0, 0x80); //半透明度为0x80
-	putimage_transparent(NULL, img, 0, 80, BLACK);        //透明贴图，关键色为BLACK，源图为这个颜色的地方会被忽略
-	putimage_alphatransparent(NULL, img, 160, 80, BLACK, 0xA0); //同时使用透明和半透明
 	
 	getch();
-	
 	delimage(img);
-	
 	closegraph();
 }
