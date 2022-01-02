@@ -3,18 +3,29 @@
 
 int main()
 {
-	initgraph(640, 480);
+	initgraph(1024, 576);
 	
-	//设置画图颜色，GREEN是颜色常数，详细可以查graphics.h对这个宏的定义的值
-	setcolor(GREEN);
+	setcolor(WHITE);
+	setfillcolor(RED);
+	setbkcolor(GRAY);
 	
-	//画一直线，从(100,100)到(500,200)
-	//特别注意的是端点，(100,100)这个点会被画上颜色，但(500,200)不会画上颜色
-	//以下所有的矩形（或者说两点）描述方式，总是前一个点取得到，但后一个点取不到
-	line(100, 100, 500, 200);
+	// Line
+	line(0, 0, 1024, 576);
+	
+	// Circle
+	circle(100, 100, 100);
+	fillcircle(100, 100, 100);
+	
+	// Ellipse
+	ellipse(300, 300, 90, 180, 200, 100);
+	sector(300, 300, 90, 180, 200, 100);
+	fillellipse(300, 300, 200, 100);
+	
+	// Rect
+	rectangle(10, 10, 100, 100);
+	bar(10, 10, 100, 100);
 	
 	getch();
-	
 	closegraph();
-	return 0;
 }
+
