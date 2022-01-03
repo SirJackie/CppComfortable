@@ -1,4 +1,4 @@
-//用户交互——鼠标2
+//用户交互——字符串数据输入* （非重点）
 #include <graphics.h>
 
 #include <stdio.h>
@@ -7,37 +7,17 @@ int main()
 {
 	initgraph(640, 480);
 	
-	setrendermode(RENDER_MANUAL); //不使用自动刷新，减少闪烁 
+	//用来接收输入
+	char str[100];
 	
-	setfont(18, 0, "宋体");
+	//调用对话框函数
+	inputbox_getline("标题", "文本框提示", str, 100);
 	
-	mouse_msg msg = {0};
-	for ( ; is_run(); delay_fps(60))
-	{
-		//获取鼠标消息，此函数不会等待，运行后会立即返回
-		while (mousemsg())
-		{
-			// 也可以用简单形式：mousepos(&x, &y);
-			msg = getmouse();
-		}
-		
-		cleardevice();
-		xyprintf(0, 0, "x = %10d  y = %10d",
-			msg.x, msg.y);
-		xyprintf(0, 20, "move  = %d down  = %d up    = %d",
-			(int)msg.is_move(),
-			(int)msg.is_down(),
-			(int)msg.is_up());
-		xyprintf(0, 40, "left  = %d mid   = %d right = %d",
-			(int)msg.is_left(),
-			(int)msg.is_mid(),
-			(int)msg.is_right());
-		xyprintf(0, 60, "wheel = %d  wheel rotate = %d",
-			(int)msg.is_wheel(),
-			msg.wheel);
-	}
+	//显示输入的内容
+	outtextxy(0, 0, str);
+	
+	getch();
 	
 	closegraph();
 	return 0;
 }
-
