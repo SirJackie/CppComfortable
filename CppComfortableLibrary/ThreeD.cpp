@@ -31,6 +31,12 @@ void BatchShowBuf(float* xBuf, float* yBuf, int length){
 	cout << "----------------------------------------" << endl;
 }
 
+void BatchDrawBuf(float* xBuf, float* yBuf, int length, int screenWidth, int screenHeight){
+	for(int i = 0; i < length; i++){
+		DrawPoint(xBuf[i], yBuf[i], 5, 255, 255, 255, screenWidth, screenHeight);
+	}
+}
+
 void BatchPubelize(float* xbuf, float* ybuf, int length, float sw, float sh){
 	float ar = sw / sh;
 	for(int i = 0; i < length; i++){

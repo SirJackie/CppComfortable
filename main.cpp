@@ -18,10 +18,11 @@ float tXBuf[4], tYBuf[4];
 
 void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
-	
+
 	BatchCopyBuf(xBuf, yBuf, tXBuf, tYBuf, bufLen);
 	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
 	BatchShowBuf(tXBuf, tYBuf, bufLen);
+	BatchDrawBuf(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
 }
 
 int main() {
