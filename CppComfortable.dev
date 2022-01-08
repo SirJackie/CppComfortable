@@ -1,7 +1,7 @@
 [Project]
 filename = CppComfortable.dev
 name = CppComfortable
-UnitCount = 5
+UnitCount = 4
 Type = 1
 Ver = 3
 ObjFiles = 
@@ -99,11 +99,11 @@ FileEncoding = AUTO
 
 
 [Unit4]
-FileName = CppComfortableLibrary/UILifeCycle.cpp
-CompileCpp = 1
+FileName = CppComfortableLibrary/UILifeCycle.h
+CompileCpp = 0
 Folder = CppComfortableLibrary
-Compile = 1
-Link = 1
+Compile = 0
+Link = 0
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
