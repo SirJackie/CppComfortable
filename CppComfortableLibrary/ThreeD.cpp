@@ -45,3 +45,10 @@ void BatchPubelize(float* xbuf, float* ybuf, int length, float sw, float sh){
 	}
 }
 
+void BatchExpand(float* xbuf, float* ybuf, int length, float fovY){
+	for(int i = 0; i < length; i++){
+		xbuf[i] = FExpandX(xbuf[i], fovY);
+		ybuf[i] = FExpandY(ybuf[i], fovY);
+	}
+}
+

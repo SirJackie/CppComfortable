@@ -20,6 +20,7 @@ void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
 
 	BatchCopyBuf(xBuf, yBuf, tXBuf, tYBuf, bufLen);
+	BatchExpand(tXBuf, tYBuf, bufLen, 120.0f);
 	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
 	BatchShowBuf(tXBuf, tYBuf, bufLen);
 	BatchDrawBuf(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
