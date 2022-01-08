@@ -8,7 +8,7 @@
 using std::cout;
 using std::endl;
 
-#define TARGET_FPS 1
+#define TARGET_FPS 60
 
 int cpulBackImage = 0;
 
