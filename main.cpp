@@ -11,10 +11,14 @@ void setup() {
 }
 
 void loop () {
-	setfillcolor(EGERGB(color, color, color));
-	bar(0, 0, WIDTH, HEIGHT);
+	for(int y = 0; y < HEIGHT; y++){
+		for(int x = 0; x < WIDTH; x++){
+			frameBuffer[(y * WIDTH + x) * 3 + 0] = color;
+			frameBuffer[(y * WIDTH + x) * 3 + 1] = color;
+			frameBuffer[(y * WIDTH + x) * 3 + 2] = color;
+		}
+	}
 	color += 1;
-	ShowPtrAddr(frameBuffer);
 }
 
 int main() {
