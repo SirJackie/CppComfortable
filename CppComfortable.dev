@@ -99,6 +99,19 @@ FileEncoding = AUTO
 
 
 [Unit4]
+FileName = CppComfortableLibrary/UILifeCycle.cpp
+CompileCpp = 1
+Folder = CppComfortableLibrary
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit5]
 FileName = CppComfortableLibrary/UILifeCycle.h
 CompileCpp = 0
 Folder = CppComfortableLibrary
@@ -111,7 +124,7 @@ DetectEncoding = 1
 FileEncoding = AUTO
 
 
-[Unit5]
+[Unit6]
 FileName = CppComfortableLibrary/FrameBufferTools.cpp
 CompileCpp = 1
 Folder = CppComfortableLibrary
@@ -124,25 +137,12 @@ DetectEncoding = 1
 FileEncoding = AUTO
 
 
-[Unit6]
+[Unit7]
 FileName = CppComfortableLibrary/FrameBufferTools.h
 CompileCpp = 0
 Folder = CppComfortableLibrary
 Compile = 0
 Link = 0
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-DetectEncoding = 1
-FileEncoding = AUTO
-
-
-[Unit7]
-FileName = CppComfortableLibrary/UILifeCycle.cpp
-CompileCpp = 1
-Folder = CppComfortableLibrary
-Compile = 1
-Link = 1
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
