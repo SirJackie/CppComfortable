@@ -1,7 +1,7 @@
 [Project]
 filename = CppComfortable.dev
 name = CppComfortable
-UnitCount = 7
+UnitCount = 9
 Type = 1
 Ver = 3
 ObjFiles = 
@@ -139,6 +139,32 @@ FileEncoding = AUTO
 
 [Unit7]
 FileName = CppComfortableLibrary/FrameBufferTools.h
+CompileCpp = 0
+Folder = CppComfortableLibrary
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit8]
+FileName = CppComfortableLibrary/MathTools.cpp
+CompileCpp = 1
+Folder = CppComfortableLibrary
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit9]
+FileName = CppComfortableLibrary/MathTools.h
 CompileCpp = 0
 Folder = CppComfortableLibrary
 Compile = 0

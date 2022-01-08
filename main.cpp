@@ -1,19 +1,23 @@
 #include "./CppComfortableLibrary/UILifeCycle.h"
 #include "./CppComfortableLibrary/ConsoleTools.h"
 #include "./CppComfortableLibrary/FrameBufferTools.h"
+#include "./CppComfortableLibrary/MathTools.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
 
-unsigned char color = 0;
+unsigned int position = 0;
 
 void setup() {
 	;
 }
 
 void loop() {
-	FillRectangle(0, 0, WIDTH, HEIGHT, color, color, 0, WIDTH);
-	color += 1;
+	DrawPoint(position, position, 5, 255, 255, 255, WIDTH, HEIGHT);
+	position += 1;
+	if(position >= WIDTH || position >= HEIGHT){
+		position = 0;
+	}
 }
 
 int main() {
