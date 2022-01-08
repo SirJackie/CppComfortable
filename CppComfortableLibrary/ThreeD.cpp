@@ -8,6 +8,11 @@ float FPubeY(float y, float sh){
 	return ((1-y) / 2.0f) * sh;
 }
 
-//float FExpandX(float x, float fovY){
-//	return x * (1.0f / tan())
-//}
+float FExpandX(float x, float fovY){
+	return x * (1.0f / tand(fovY / 2.0f));
+}
+
+float FExpandY(float y, float fovY){
+	return y * (1.0f / tand(fovY / 2.0f));
+}
+

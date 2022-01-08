@@ -34,7 +34,7 @@ void loop() {
 //	DrawPoint(x2p, y2p, 5, 255, 255, 255, WIDTH, HEIGHT);
 //	DrawPoint(x3p, y3p, 5, 255, 255, 255, WIDTH, HEIGHT);
 
-	cout << asind(1.0f) << endl;
+	cout << FExpandY(0.57f, 60.0f) << endl;
 }
 
 int main() {
