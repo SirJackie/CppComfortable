@@ -13,16 +13,18 @@ void setup() {
 
 float xBuf[4] = {-1.77777f, 1.77777f, -1.77777f, 1.77777f};
 float yBuf[4] = {1.0f, 1.0f, -1.0f, -1.0f};
+float zBuf[4] = {1.0f, 2.0f, 1.0f, 2.0f};
 
-float tXBuf[4], tYBuf[4];
+float tXBuf[4], tYBuf[4], tZBuf[4];
 
 void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
 
-	BatchCopyBuf(xBuf, yBuf, tXBuf, tYBuf, bufLen);
+	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
+	BatchProject(tXBuf, tYBuf, tZBuf, bufLen);
 	BatchExpand(tXBuf, tYBuf, bufLen, 120.0f);
 	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
-	BatchShowBuf(tXBuf, tYBuf, bufLen);
+	BatchShowBuf(tXBuf, tYBuf, tZBuf, bufLen);
 	BatchDrawBuf(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
 }
 

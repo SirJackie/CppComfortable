@@ -16,14 +16,15 @@ float FExpandY(float y, float fovY){
 	return y * (1.0f / tand(fovY / 2.0f));
 }
 
-void BatchCopyBuf(float* xBuf, float* yBuf, float* newXBuf, float* newYBuf, int length){
+void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* newYBuf, float* newZBuf, int length){
 	for(int i = 0; i < length; i++){
 		newXBuf[i] = xBuf[i];
 		newYBuf[i] = yBuf[i];
+		newZBuf[i] = zBuf[i];
 	}
 }
 
-void BatchShowBuf(float* xBuf, float* yBuf, int length){
+void BatchShowBuf(float* xBuf, float* yBuf, float* zBuf, int length){
 	cout << "----------------------------------------" << endl;
 	for(int i = 0; i < length; i++){
 		cout << "X: " << xBuf[i] << "; Y: " << yBuf[i] << endl;
@@ -37,18 +38,25 @@ void BatchDrawBuf(float* xBuf, float* yBuf, int length, int screenWidth, int scr
 	}
 }
 
-void BatchPubelize(float* xbuf, float* ybuf, int length, float sw, float sh){
+void BatchPubelize(float* xBuf, float* yBuf, int length, float sw, float sh){
 	float ar = sw / sh;
 	for(int i = 0; i < length; i++){
-		xbuf[i] = FPubeX(xbuf[i], ar, sw);
-		ybuf[i] = FPubeY(ybuf[i], sh);
+		xBuf[i] = FPubeX(xBuf[i], ar, sw);
+		yBuf[i] = FPubeY(yBuf[i], sh);
 	}
 }
 
-void BatchExpand(float* xbuf, float* ybuf, int length, float fovY){
+void BatchExpand(float* xBuf, float* yBuf, int length, float fovY){
 	for(int i = 0; i < length; i++){
-		xbuf[i] = FExpandX(xbuf[i], fovY);
-		ybuf[i] = FExpandY(ybuf[i], fovY);
+		xBuf[i] = FExpandX(xBuf[i], fovY);
+		yBuf[i] = FExpandY(yBuf[i], fovY);
+	}
+}
+
+void BatchProject(float* xBuf, float* yBuf, float* zBuf, int length){
+	for(int i = 0; i < length; i++){
+		xBuf[i] = xBuf[i] / zBuf[i];
+		yBuf[i] = yBuf[i] / zBuf[i];
 	}
 }
 

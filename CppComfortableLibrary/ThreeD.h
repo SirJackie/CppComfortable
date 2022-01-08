@@ -14,12 +14,13 @@ float FPubeY(float y, float sh);
 float FExpandX(float x, float fovY);
 float FExpandY(float y, float fovY);
 
-void BatchCopyBuf(float* xBuf, float* yBuf, float* newXBuf, float* newYBuf, int length);
-void BatchShowBuf(float* xBuf, float* yBuf, int length);
+void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* newYBuf, float* newZBuf, int length);
+void BatchShowBuf(float* xBuf, float* yBuf, float* zBuf, int length);
 void BatchDrawBuf(float* xBuf, float* yBuf, int length, int screenWidth, int screenHeight);
 
-void BatchPubelize(float* xbuf, float* ybuf, int length, float sw, float sh);
-void BatchExpand(float* xbuf, float* ybuf, int length, float fovY);
+void BatchPubelize(float* xBuf, float* yBuf, int length, float sw, float sh);
+void BatchExpand(float* xBuf, float* yBuf, int length, float fovY);
+void BatchProject(float* xBuf, float* yBuf, float* zBuf, int length);
 
 #endif
 
