@@ -1,7 +1,7 @@
 [Project]
 filename = CppComfortable.dev
 name = CppComfortable
-UnitCount = 1
+UnitCount = 5
 Type = 1
 Ver = 3
 ObjFiles = 
@@ -27,7 +27,7 @@ CustomMakefile =
 UsePrecompiledHeader = 0
 PrecompiledHeader = 
 CommandLine = 
-Folders = 
+Folders = CppComfortableLibrary
 IncludeVersionInfo = 0
 SupportXPThemes = 0
 CompilerSet = 1
@@ -70,3 +70,55 @@ ProductName =
 ProductVersion = 
 AutoIncBuildNr = 0
 SyncProduct = 1
+
+
+[Unit2]
+FileName = CppComfortableLibrary/ConsoleTools.cpp
+CompileCpp = 1
+Folder = CppComfortableLibrary
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit3]
+FileName = CppComfortableLibrary/ConsoleTools.h
+CompileCpp = 0
+Folder = CppComfortableLibrary
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit4]
+FileName = CppComfortableLibrary/UILifeCycle.cpp
+CompileCpp = 1
+Folder = CppComfortableLibrary
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit5]
+FileName = CppComfortableLibrary/UILifeCycle.h
+CompileCpp = 0
+Folder = CppComfortableLibrary
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO

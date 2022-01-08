@@ -1,14 +1,8 @@
-#define SHOW_CONSOLE
-#include <graphics.h>
-#include <iostream>
-using namespace std;
+#include "./CppComfortableLibrary/UILifeCycle.h"
+#include "./CppComfortableLibrary/ConsoleTools.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
-
-void ShowPtrAddr(void* ptr){
-	cout << (unsigned long long) ptr << endl;
-}
 
 void setup(){
 	setfillcolor(RED);
@@ -19,26 +13,16 @@ void loop (){
 	;
 }
 
-int frontBuffer = 0;
-#define SwapBuffer() (frontBuffer=!frontBuffer)
-#define SetFrontBuffer() (setvisualpage(frontBuffer))
-#define SetBackBuffer() (setactivepage(!frontBuffer))
-
-inline static void SwapAndSet(){
-	SwapBuffer();
-	SetFrontBuffer();
-	SetBackBuffer();
-}
-
 int main() {
 	initgraph(WIDTH, HEIGHT, INIT_RENDERMANUAL);
-	
-	setup();
-	SwapAndSet();
 
-	for( ; is_run(); delay_fps(60) ) {
+	PreSwappi();
+	setup();
+
+	for( ; is_run(); delay_fps(1) ) {
+		cout << cpulFrontImage << endl;
 		loop();
-		SwapAndSet();
+		Swappi();
 	}
 
 	closegraph();
