@@ -14,7 +14,7 @@ void loop (){
 }
 
 int main() {
-	initgraph(WIDTH, HEIGHT, INIT_RENDERMANUAL);
+	CreateWindow(WIDTH, HEIGHT);
 
 	PreSetup();
 	setup();
@@ -22,9 +22,9 @@ int main() {
 
 	for LifeCycle {
 		loop();
-		Swappi();
+		PostLoop();
 	}
 
-	closegraph();
+	DestroyWindow();
 }
 

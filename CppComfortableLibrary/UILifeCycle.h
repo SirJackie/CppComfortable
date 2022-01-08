@@ -16,9 +16,12 @@ int cpulBackImage = 0;
 #define SetFrontImage() (setvisualpage(!cpulBackImage))
 #define SetBackImage() (setactivepage(cpulBackImage))
 
-#define Swappi() { SwapImage(), SetFrontImage(), SetBackImage(); }
 #define PreSetup() { SetFrontImage(), SetBackImage(); }
 #define PostSetup() { SwapImage(), SetFrontImage(), SetBackImage(), delay_fps(TARGET_FPS); }
+#define PostLoop() { SwapImage(), SetFrontImage(), SetBackImage(); }
+
+#define CreateWindow(width, height) (initgraph(width, height, INIT_RENDERMANUAL))
+#define DestroyWindow() (closegraph())
 
 #define WatchCurrentBufferState() { cout << "Front: " << !cpulBackImage << "; Back: " << cpulBackImage << endl; }
 
