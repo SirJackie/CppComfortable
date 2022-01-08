@@ -17,12 +17,10 @@ int main() {
 	initgraph(WIDTH, HEIGHT, INIT_RENDERMANUAL);
 
 	PreSetup();
-	WatchCurrentBufferState();
 	setup();
 	PostSetup();
 
-	for( ; is_run(); delay_fps(1) ) {
-		WatchCurrentBufferState();
+	for LifeCycle {
 		loop();
 		Swappi();
 	}
