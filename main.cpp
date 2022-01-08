@@ -1,5 +1,6 @@
 #include "./CppComfortableLibrary/UILifeCycle.h"
 #include "./CppComfortableLibrary/ConsoleTools.h"
+#include "./CppComfortableLibrary/FrameBufferTools.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
@@ -10,15 +11,8 @@ void setup() {
 	;
 }
 
-void loop () {
-	for(int y = 0; y < HEIGHT; y++){
-		for(int x = 0; x < WIDTH; x++){
-			frameBuffer[(y * WIDTH + x) * 4 + 0] = (x%2) * 255;
-			frameBuffer[(y * WIDTH + x) * 4 + 1] = (x%2) * 255;
-			frameBuffer[(y * WIDTH + x) * 4 + 2] = (x%2) * 255;
-			frameBuffer[(y * WIDTH + x) * 4 + 3] = 255;
-		}
-	}
+void loop() {
+	FillRectangle(0, 0, WIDTH, HEIGHT, color, color, color, WIDTH);
 	color += 1;
 }
 

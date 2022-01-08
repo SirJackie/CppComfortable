@@ -11,13 +11,13 @@ using std::endl;
 #define TARGET_FPS 60
 
 // Swapping Related Definitions
-int cpulBackImage = 0;
+extern int cpulBackImage;
 #define SwapImage() (cpulBackImage=!cpulBackImage)
 #define SetFrontImage() (setvisualpage(!cpulBackImage))
 #define SetBackImage() (setactivepage(cpulBackImage))
 
 // Address Getting Related Definitions
-unsigned char* frameBuffer;
+extern unsigned char* frameBuffer;
 #define GetCurrentBuffer() ( (unsigned char*)(getbuffer(gettarget())) )
 #define UpdateBufferAddr() (frameBuffer=GetCurrentBuffer())
 
