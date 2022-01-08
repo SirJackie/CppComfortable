@@ -6,11 +6,11 @@
 
 unsigned char color = 0;
 
-void setup(){
+void setup() {
 	;
 }
 
-void loop (){
+void loop () {
 	setfillcolor(EGERGB(color, color, color));
 	bar(0, 0, WIDTH, HEIGHT);
 	color += 1;
