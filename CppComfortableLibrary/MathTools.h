@@ -13,7 +13,6 @@ using std::atan;
 
 #define clamp(min, x, max) (x < min ? min : x >= max ? max - 1 : x)
 
-#define PI 3.1415926535
 #define DEG2RAD (PI / 180.0f)
 #define RAD2DEG (180.0f / PI)
 
