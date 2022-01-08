@@ -4,11 +4,6 @@
 #define WIDTH 1024
 #define HEIGHT 576
 
-#define GetCurrentBuffer() ( (unsigned char*)(getbuffer(gettarget())) )
-
-unsigned char* frameBuffer;
-#define UpdateBufferAddr() (frameBuffer=GetCurrentBuffer())
-
 unsigned char color = 0;
 
 void setup(){
@@ -30,7 +25,7 @@ int main() {
 	PostSetup();
 
 	for LifeCycle {
-		UpdateBufferAddr();
+		PreLoop();
 		loop();
 		PostLoop();
 	}
