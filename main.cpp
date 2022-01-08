@@ -3,6 +3,7 @@
 #include "./CppComfortableLibrary/FrameBufferTools.h"
 #include "./CppComfortableLibrary/MathTools.h"
 #include "./CppComfortableLibrary/ThreeD.h"
+#include "./CppComfortableLibrary/QuickKeyBoard.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
@@ -53,17 +54,7 @@ int main(){
 	for LifeCycle {
 		PreLoop();
 		
-		int kbmsgResult = kbmsg();
-		
-		key_msg getkeyResult = {0};
-		if(kbmsgResult){
-			getkeyResult = getkey();
-		}
-		else{
-			getkeyResult = {0};
-		}
-		
-		cout << kbmsgResult << ", " << getkeyResult.key << endl;
+		cout << IsKeyPressed('Q') << endl;
 		
 		PostLoop();
 	}
