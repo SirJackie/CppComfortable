@@ -17,8 +17,8 @@ int cpulBackImage = 0;
 #define SetBackImage() (setactivepage(cpulBackImage))
 
 #define PreSetup() { SetFrontImage(), SetBackImage(); }
-#define PostSetup() { SwapImage(), SetFrontImage(), SetBackImage(), delay_fps(TARGET_FPS); }
-#define PostLoop() { SwapImage(), SetFrontImage(), SetBackImage(); }
+#define PostSetup() { SwapImage(), SetFrontImage(), SetBackImage(), cleardevice(), delay_fps(TARGET_FPS); }
+#define PostLoop() { SwapImage(), SetFrontImage(), SetBackImage(), cleardevice(); }
 
 #define ConstructWindow(width, height) (initgraph(width, height, INIT_RENDERMANUAL))
 #define DeconstructWindow() (closegraph())
