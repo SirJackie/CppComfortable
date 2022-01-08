@@ -10,32 +10,37 @@ void ShowPtrAddr(void* ptr){
 	cout << (unsigned long long) ptr << endl;
 }
 
-void setup(PIMAGE image){
+void setup(){
 	setfillcolor(RED);
 	bar(10, 10, 100, 100);
 }
 
-void loop (PIMAGE image){
+void loop (){
 	;
 }
 
-int main() {
+int frontBuffer = 0;
+#define SwapBuffer() (frontBuffer=!frontBuffer)
+#define SetFrontBuffer() (setvisualpage(frontBuffer))
+#define SetBackBuffer() (setactivepage(!frontBuffer))
 
+inline static void SwapAndSet(){
+	SwapBuffer();
+	SetFrontBuffer();
+	SetBackBuffer();
+}
+
+int main() {
 	initgraph(WIDTH, HEIGHT, INIT_RENDERMANUAL);
 	
-	int frontBuffer = 0;
+	setup();
+	SwapAndSet();
 
-	for( ; is_run(); delay_fps(2) ) {
-		setvisualpage(frontBuffer);
-		setactivepage(!frontBuffer);
-		frontBuffer = !frontBuffer;
-		cout<<frontBuffer<<endl;
-		if(frontBuffer == 0){
-			setup(gettarget());
-		}
+	for( ; is_run(); delay_fps(60) ) {
+		loop();
+		SwapAndSet();
 	}
 
 	closegraph();
-
 }
 
