@@ -1,7 +1,7 @@
 [Project]
 filename = CppComfortable.dev
 name = CppComfortable
-UnitCount = 9
+UnitCount = 11
 Type = 1
 Ver = 3
 ObjFiles = 
@@ -165,6 +165,32 @@ FileEncoding = AUTO
 
 [Unit9]
 FileName = CppComfortableLibrary/MathTools.h
+CompileCpp = 0
+Folder = CppComfortableLibrary
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit10]
+FileName = CppComfortableLibrary/ThreeD.cpp
+CompileCpp = 1
+Folder = CppComfortableLibrary
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+FileEncoding = AUTO
+
+
+[Unit11]
+FileName = CppComfortableLibrary/ThreeD.h
 CompileCpp = 0
 Folder = CppComfortableLibrary
 Compile = 0
