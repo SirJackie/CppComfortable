@@ -4,13 +4,16 @@
 #define WIDTH 1024
 #define HEIGHT 576
 
+unsigned char color = 0;
+
 void setup(){
-	setfillcolor(RED);
-	bar(10, 10, 100, 100);
+	;
 }
 
 void loop (){
-	;
+	setfillcolor(EGERGB(color, color, color));
+	bar(0, 0, WIDTH, HEIGHT);
+	color += 1;
 }
 
 int main() {
