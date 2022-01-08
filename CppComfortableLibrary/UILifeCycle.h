@@ -4,14 +4,21 @@
 #define SHOW_CONSOLE
 #include <graphics.h>
 
-int cpulFrontImage = 0;
+#include <iostream>
+using std::cout;
+using std::endl;
 
-#define SwapImage() (cpulFrontImage=!cpulFrontImage)
-#define SetFrontImage() (setvisualpage(cpulFrontImage))
-#define SetBackImage() (setactivepage(!cpulFrontImage))
+int cpulBackImage = 0;
 
-#define PreSwappi() { SetFrontImage(), SetBackImage(); }
+#define SwapImage() (cpulBackImage=!cpulBackImage)
+#define SetFrontImage() (setvisualpage(!cpulBackImage))
+#define SetBackImage() (setactivepage(cpulBackImage))
+
 #define Swappi() { SwapImage(), SetFrontImage(), SetBackImage(); }
+#define PreSetup() { SetFrontImage(), SetBackImage(); }
+#define PostSetup() { SwapImage(), SetFrontImage(), SetBackImage(), delay_fps(1); }
+
+#define WatchCurrentBufferState() { cout << "Front: " << !cpulBackImage << "; Back: " << cpulBackImage << endl; }
 
 #endif
 

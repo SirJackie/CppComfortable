@@ -16,11 +16,13 @@ void loop (){
 int main() {
 	initgraph(WIDTH, HEIGHT, INIT_RENDERMANUAL);
 
-	PreSwappi();
+	PreSetup();
+	WatchCurrentBufferState();
 	setup();
+	PostSetup();
 
 	for( ; is_run(); delay_fps(1) ) {
-		cout << cpulFrontImage << endl;
+		WatchCurrentBufferState();
 		loop();
 		Swappi();
 	}
