@@ -53,14 +53,17 @@ int main(){
 	for LifeCycle {
 		PreLoop();
 		
-		int kbhitResult = kbhit();
+		int kbmsgResult = kbmsg();
 		
-		int getchResult = 0;
-		if(kbhitResult){
-			getchResult = getch();
+		key_msg getkeyResult = {0};
+		if(kbmsgResult){
+			getkeyResult = getkey();
+		}
+		else{
+			getkeyResult = {0};
 		}
 		
-		cout << kbhitResult << " " <<getchResult << endl;
+		cout << kbmsgResult << ", " << getkeyResult.key << endl;
 		
 		PostLoop();
 	}
