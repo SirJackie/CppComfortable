@@ -13,9 +13,10 @@ void setup() {
 void loop () {
 	for(int y = 0; y < HEIGHT; y++){
 		for(int x = 0; x < WIDTH; x++){
-			frameBuffer[(y * WIDTH + x) * 3 + 0] = color;
-			frameBuffer[(y * WIDTH + x) * 3 + 1] = color;
-			frameBuffer[(y * WIDTH + x) * 3 + 2] = color;
+			frameBuffer[(y * WIDTH + x) * 4 + 0] = (x%2) * 255;
+			frameBuffer[(y * WIDTH + x) * 4 + 1] = (x%2) * 255;
+			frameBuffer[(y * WIDTH + x) * 4 + 2] = (x%2) * 255;
+			frameBuffer[(y * WIDTH + x) * 4 + 3] = 255;
 		}
 	}
 	color += 1;
