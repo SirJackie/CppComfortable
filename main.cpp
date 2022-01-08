@@ -12,7 +12,7 @@ void setup() {
 }
 
 void loop() {
-	FillRectangle(0, 0, WIDTH, HEIGHT, color, color, color, WIDTH);
+	FillRectangle(0, 0, WIDTH, HEIGHT, color, color, 0, WIDTH);
 	color += 1;
 }
 
