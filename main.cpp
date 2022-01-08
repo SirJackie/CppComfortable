@@ -14,7 +14,7 @@ void loop (){
 }
 
 int main() {
-	CreateWindow(WIDTH, HEIGHT);
+	ConstructWindow(WIDTH, HEIGHT);
 
 	PreSetup();
 	setup();
@@ -25,6 +25,6 @@ int main() {
 		PostLoop();
 	}
 
-	DestroyWindow();
+	DeconstructWindow();
 }
 

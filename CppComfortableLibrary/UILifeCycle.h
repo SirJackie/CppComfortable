@@ -20,8 +20,8 @@ int cpulBackImage = 0;
 #define PostSetup() { SwapImage(), SetFrontImage(), SetBackImage(), delay_fps(TARGET_FPS); }
 #define PostLoop() { SwapImage(), SetFrontImage(), SetBackImage(); }
 
-#define CreateWindow(width, height) (initgraph(width, height, INIT_RENDERMANUAL))
-#define DestroyWindow() (closegraph())
+#define ConstructWindow(width, height) (initgraph(width, height, INIT_RENDERMANUAL))
+#define DeconstructWindow() (closegraph())
 
 #define WatchCurrentBufferState() { cout << "Front: " << !cpulBackImage << "; Back: " << cpulBackImage << endl; }
 
