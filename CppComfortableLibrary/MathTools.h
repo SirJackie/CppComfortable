@@ -17,6 +17,8 @@ using std::atan;
 #define DEG2RAD (PI / 180.0f)
 #define RAD2DEG (180.0f / PI)
 
+// sin, cos, tan, asin, acos, atan using degree
+
 #define sind(x) (sin(x * DEG2RAD))
 #define cosd(x) (cos(x * DEG2RAD))
 #define tand(x) (tan(x * DEG2RAD))
