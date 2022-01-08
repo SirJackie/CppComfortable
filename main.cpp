@@ -13,7 +13,7 @@ void setup() {
 }
 
 void loop() {
-	DrawPoint(position, position, 5, 255, 255, 255, WIDTH, HEIGHT);
+	DrawPoint(position, position / 2, 5, 255, 255, 255, WIDTH, HEIGHT);
 	position += 1;
 	if(position >= WIDTH || position >= HEIGHT){
 		position = 0;
