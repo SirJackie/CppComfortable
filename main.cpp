@@ -51,6 +51,6 @@ int main() {
 		PostLoop();
 	}
 
-	DeconstructWindow();
+	DestructWindow();
 }
 

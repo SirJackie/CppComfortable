@@ -29,7 +29,7 @@ extern unsigned char* frameBuffer;
 
 // Window Creating Related Definitions
 #define ConstructWindow(width, height) (initgraph(width, height, INIT_RENDERMANUAL))
-#define DeconstructWindow() (closegraph())
+#define DestructWindow() (closegraph())
 
 // Debug Related Definitions
 #define WatchCurrentBufferState() { cout << "Front: " << !cpulBackImage << "; Back: " << cpulBackImage << endl; }
