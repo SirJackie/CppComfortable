@@ -88,33 +88,54 @@ void BatchTranslate(float* xBuf, float* yBuf, float* zBuf, float* cam, int lengt
 
 void BatchRotation(float* xBuf, float* yBuf, float* zBuf, float* cam, int length){
 	for(int i = 0; i < length; i++){
-		XYRot(xBuf + i, yBuf + i, cam[3]);
+		XYRot(xBuf + i, yBuf + i,  cam[5]);
+		XZRot(xBuf + i, zBuf + i, -cam[3]);
+		ZYRot(zBuf + i, yBuf + i,  cam[4]);
 	}
 }
 
-void KeyboardlizeCamera(float* cam, float speed){
+void KeyboardlizeCamera(float* cam, float moveSpeed, float rotateSpeed){
 	if(IsKeyPressed(CSK_W)){
-		cam[2] += speed;
+		cam[2] += moveSpeed;
 	}
 	if(IsKeyPressed(CSK_S)){
-		cam[2] -= speed;
+		cam[2] -= moveSpeed;
 	}
 	if(IsKeyPressed(CSK_A)){
-		cam[0] -= speed;
+		cam[0] -= moveSpeed;
 	}
 	if(IsKeyPressed(CSK_D)){
-		cam[0] += speed;
+		cam[0] += moveSpeed;
 	}
 	if(IsKeyPressed(CSK_Space)){
-		cam[1] += speed;
+		cam[1] += moveSpeed;
 	}
 	if(IsKeyPressed(CSK_Shift)){
-		cam[1] -= speed;
+		cam[1] -= moveSpeed;
+	}
+	
+	if(IsKeyPressed(CSK_I)){
+		cam[4] += rotateSpeed;
+	}
+	if(IsKeyPressed(CSK_K)){
+		cam[4] -= rotateSpeed;
+	}
+	if(IsKeyPressed(CSK_J)){
+		cam[3] -= rotateSpeed;
+	}
+	if(IsKeyPressed(CSK_L)){
+		cam[3] += rotateSpeed;
+	}
+	if(IsKeyPressed(CSK_U)){
+		cam[5] -= rotateSpeed;
+	}
+	if(IsKeyPressed(CSK_O)){
+		cam[5] += rotateSpeed;
 	}
 }
 
 void ShowCamera(float* cam){
 	cout << "CamX: " << cam[0] << "; CamY: " << cam[1] << "; CamZ: " << cam[2] 
-		 << "; XYRot: " << cam[3] << "; XZRot: " << cam[4] << "; ZYRot:" << cam[5] << endl;
+		 << "; Rot3: " << cam[3] << "; Rot4: " << cam[4] << "; Rot5:" << cam[5] << endl;
 }
 

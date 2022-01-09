@@ -29,7 +29,7 @@ void BatchProject(float* xBuf, float* yBuf, float* zBuf, int length);
 void BatchTranslate(float* xBuf, float* yBuf, float* zBuf, float* cam, int length);
 void BatchRotation(float* xBuf, float* yBuf, float* zBuf, float* cam, int length);
 
-void KeyboardlizeCamera(float* cam, float speed);
+void KeyboardlizeCamera(float* cam, float moveSpeed, float rotateSpeed);
 void ShowCamera(float* cam);
 
 #endif

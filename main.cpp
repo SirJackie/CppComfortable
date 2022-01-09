@@ -18,14 +18,14 @@ float zBuf[8] = {-1, -1, -1, -1, 1, 1, 1, 1};
 
 float tXBuf[8], tYBuf[8], tZBuf[8];
 
-float cam[6] = {-0.0f, 0.0f, -3.5f, 30.0f, 0.0f, 0.0f};
+float cam[6] = {-0.0f, 0.0f, -5.0f, 0.0f, 0.0f, 0.0f};
 
 void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
 
 	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
 	
-	KeyboardlizeCamera(cam, 0.05f);
+	KeyboardlizeCamera(cam, 0.05f, 1.0f);
 	ShowCamera(cam);
 	
 	BatchTranslate(tXBuf, tYBuf, tZBuf, cam, bufLen);
