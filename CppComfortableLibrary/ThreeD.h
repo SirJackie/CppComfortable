@@ -17,7 +17,7 @@ float FExpandY(float y, float fovY);
 
 void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* newYBuf, float* newZBuf, int length);
 void BatchShowBuf(float* xBuf, float* yBuf, float* zBuf, int length);
-void BatchDrawBuf(float* xBuf, float* yBuf, int length, int screenWidth, int screenHeight);
+void BatchDrawBuf(float* xBuf, float* yBuf, float* zBuf, int length, int screenWidth, int screenHeight);
 
 void BatchPubelize(float* xBuf, float* yBuf, int length, float sw, float sh);
 void BatchExpand(float* xBuf, float* yBuf, int length, float fovY);

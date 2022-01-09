@@ -34,7 +34,7 @@ void loop() {
 	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
 
 //	BatchShowBuf(tXBuf, tYBuf, tZBuf, bufLen);
-	BatchDrawBuf(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
+	BatchDrawBuf(tXBuf, tYBuf, tZBuf, bufLen, WIDTH, HEIGHT);
 }
 
 int main() {
