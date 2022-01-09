@@ -27,7 +27,7 @@ void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* 
 void BatchShowBuf(float* xBuf, float* yBuf, float* zBuf, int length){
 	cout << "----------------------------------------" << endl;
 	for(int i = 0; i < length; i++){
-		cout << "X: " << xBuf[i] << "; Y: " << yBuf[i] << endl;
+		cout << "X: " << xBuf[i] << "; Y: " << yBuf[i] << "; Z: " << zBuf[i] << endl;
 	}
 	cout << "----------------------------------------" << endl;
 }
@@ -58,5 +58,30 @@ void BatchProject(float* xBuf, float* yBuf, float* zBuf, int length){
 		xBuf[i] = xBuf[i] / zBuf[i];
 		yBuf[i] = yBuf[i] / zBuf[i];
 	}
+}
+
+void KeyboardlizeCamera(float* cam, float speed){
+	if(IsKeyPressed(CSK_W)){
+		cam[2] += speed;
+	}
+	if(IsKeyPressed(CSK_S)){
+		cam[2] -= speed;
+	}
+	if(IsKeyPressed(CSK_A)){
+		cam[0] -= speed;
+	}
+	if(IsKeyPressed(CSK_D)){
+		cam[0] += speed;
+	}
+	if(IsKeyPressed(CSK_Space)){
+		cam[1] += speed;
+	}
+	if(IsKeyPressed(CSK_Shift)){
+		cam[1] -= speed;
+	}
+}
+
+void ShowCamera(float* cam){
+	cout << "CamX: " << cam[0] << "; CamY: " << cam[1] << "; CamZ: " << cam[2] << endl;
 }
 
