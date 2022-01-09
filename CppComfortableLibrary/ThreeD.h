@@ -19,6 +19,10 @@ void XYRot(float* x, float* y, float alpha);
 void XZRot(float* x, float* z, float alpha);
 void ZYRot(float* z, float* y, float alpha);
 
+void GetForwardVector(float* cam, float* optForwardVector_Float3Lst);
+void GetRightVector(float* cam, float* optRightVector_Float3Lst);
+void GetUpVector(float* cam, float* optUpVector_Float3Lst);
+
 void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* newYBuf, float* newZBuf, int length);
 void BatchShowBuf(float* xBuf, float* yBuf, float* zBuf, int length);
 void BatchDrawBuf(float* xBuf, float* yBuf, float* zBuf, int length, int screenWidth, int screenHeight);
