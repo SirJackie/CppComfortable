@@ -12,13 +12,13 @@ void setup() {
 	;
 }
 
-float xBuf[4] = {-1.77777f, 1.77777f, -1.77777f, 1.77777f};
-float yBuf[4] = {1.0f, 1.0f, -1.0f, -1.0f};
-float zBuf[4] = {1.0f, 2.0f, 1.0f, 2.0f};
+float xBuf[8] = {-1, 1, 1, -1, -1, 1, 1, -1};
+float yBuf[8] = {1, 1, -1, -1, 1, 1, -1, -1};
+float zBuf[8] = {-1, -1, -1, -1, 1, 1, 1, 1};
 
-float tXBuf[4], tYBuf[4], tZBuf[4];
+float tXBuf[8], tYBuf[8], tZBuf[8];
 
-float cam[3] = {-0.35f, 0.0f, -2.05f};
+float cam[3] = {-0.0f, 0.0f, -3.5f};
 
 void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
