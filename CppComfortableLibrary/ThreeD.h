@@ -22,6 +22,7 @@ void BatchDrawBuf(float* xBuf, float* yBuf, int length, int screenWidth, int scr
 void BatchPubelize(float* xBuf, float* yBuf, int length, float sw, float sh);
 void BatchExpand(float* xBuf, float* yBuf, int length, float fovY);
 void BatchProject(float* xBuf, float* yBuf, float* zBuf, int length);
+void BatchTranslate(float* xBuf, float* yBuf, float* zBuf, float* cam, int length);
 
 void KeyboardlizeCamera(float* cam, float speed);
 void ShowCamera(float* cam);

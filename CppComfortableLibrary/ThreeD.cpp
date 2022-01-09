@@ -60,6 +60,14 @@ void BatchProject(float* xBuf, float* yBuf, float* zBuf, int length){
 	}
 }
 
+void BatchTranslate(float* xBuf, float* yBuf, float* zBuf, float* cam, int length){
+	for(int i = 0; i < length; i++){
+		xBuf[i] -= cam[0];
+		yBuf[i] -= cam[1];
+		zBuf[i] -= cam[2];
+	}
+}
+
 void KeyboardlizeCamera(float* cam, float speed){
 	if(IsKeyPressed(CSK_W)){
 		cam[2] += speed;

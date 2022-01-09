@@ -18,22 +18,23 @@ float zBuf[4] = {1.0f, 2.0f, 1.0f, 2.0f};
 
 float tXBuf[4], tYBuf[4], tZBuf[4];
 
-float cam[3] = {0.0f, 0.0f, 0.0f};
+float cam[3] = {-0.35f, 0.0f, -2.05f};
 
 void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
 
 	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
 	
-	BatchProject(tXBuf, tYBuf, tZBuf, bufLen);
-	BatchExpand(tXBuf, tYBuf, bufLen, 120.0f);
-	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
-	
-//	BatchShowBuf(tXBuf, tYBuf, tZBuf, bufLen);
-	BatchDrawBuf(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
-	
 	KeyboardlizeCamera(cam, 0.05f);
 	ShowCamera(cam);
+
+	BatchTranslate(tXBuf, tYBuf, tZBuf, cam, bufLen);
+	BatchProject(tXBuf, tYBuf, tZBuf, bufLen);
+	BatchExpand(tXBuf, tYBuf, bufLen, 60.0f);
+	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
+
+//	BatchShowBuf(tXBuf, tYBuf, tZBuf, bufLen);
+	BatchDrawBuf(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
 }
 
 int main() {
