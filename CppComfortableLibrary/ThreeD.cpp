@@ -16,6 +16,24 @@ float FExpandY(float y, float fovY){
 	return y * (1.0f / tand(fovY / 2.0f));
 }
 
+void XYRot(float* x, float* y, float alpha){
+	float ox = *x, oy = *y;
+	*x = cosd(alpha) * ox + sind(alpha) * oy;
+	*y = cosd(alpha) * oy - sind(alpha) * ox;
+}
+
+void XZRot(float* x, float* z, float alpha){
+	float ox = *x, oz = *z;
+	*x = cosd(alpha) * ox + sind(alpha) * oz;
+	*z = cosd(alpha) * oz - sind(alpha) * ox;
+}
+
+void ZYRot(float* z, float* y, float alpha){
+	float oz = *z, oy = *y;
+	*z = cosd(alpha) * oz + sind(alpha) * oy;
+	*y = cosd(alpha) * oy - sind(alpha) * oz;
+}
+
 void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* newYBuf, float* newZBuf, int length){
 	for(int i = 0; i < length; i++){
 		newXBuf[i] = xBuf[i];
@@ -68,6 +86,12 @@ void BatchTranslate(float* xBuf, float* yBuf, float* zBuf, float* cam, int lengt
 	}
 }
 
+void BatchRotation(float* xBuf, float* yBuf, float* zBuf, float* cam, int length){
+	for(int i = 0; i < length; i++){
+		XYRot(xBuf + i, yBuf + i, cam[3]);
+	}
+}
+
 void KeyboardlizeCamera(float* cam, float speed){
 	if(IsKeyPressed(CSK_W)){
 		cam[2] += speed;
@@ -90,6 +114,7 @@ void KeyboardlizeCamera(float* cam, float speed){
 }
 
 void ShowCamera(float* cam){
-	cout << "CamX: " << cam[0] << "; CamY: " << cam[1] << "; CamZ: " << cam[2] << endl;
+	cout << "CamX: " << cam[0] << "; CamY: " << cam[1] << "; CamZ: " << cam[2] 
+		 << "; XYRot: " << cam[3] << "; XZRot: " << cam[4] << "; ZYRot:" << cam[5] << endl;
 }
 
