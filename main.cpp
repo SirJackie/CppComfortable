@@ -24,10 +24,10 @@ void loop() {
 	int bufLen = sizeof(xBuf) / sizeof(float);
 
 	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
-	
+
 	KeyboardlizeCamera(cam, 0.05f, 1.0f);
 	ShowCamera(cam);
-	
+
 	BatchTranslate(tXBuf, tYBuf, tZBuf, cam, bufLen);
 	BatchRotation(tXBuf, tYBuf, tZBuf, cam, bufLen);
 	BatchProject(tXBuf, tYBuf, tZBuf, bufLen);
@@ -53,4 +53,24 @@ int main() {
 
 	DestructWindow();
 }
+
+//int main(){
+//	ConstructWindow(WIDTH, HEIGHT);
+//
+//	PreSetup();
+//	PostSetup();
+//	
+//	for LifeCycle {
+//		PreLoop();
+//		
+//		int x = 0, y = 0;
+//		mousepos(&x, &y);
+//		
+//		cout << "MouseX: " << x << "; MouseY: " << y << endl;
+//		
+//		PostLoop();
+//	}
+//	
+//	DestructWindow();
+//}
 

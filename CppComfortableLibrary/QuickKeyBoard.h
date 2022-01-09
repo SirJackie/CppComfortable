@@ -1,9 +1,9 @@
 #ifndef __CppComfortable_QuickKeyBoard_H__
 #define __CppComfortable_QuickKeyBoard_H__
 
-#include <Windows.h>
+#include <graphics.h>
 
-#define IsKeyPressed(VK_NONAME) ( (GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1 : 0 )
+#define IsKeyPressed(CSK) keystate(CSK)
 
 /*
  ** Unique Cross-platformed Global Keyboard Index Declaration
