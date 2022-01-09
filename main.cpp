@@ -47,18 +47,18 @@
 
 int main(){
 	ConstructWindow(WIDTH, HEIGHT);
-	
+
 	PreSetup();
 	PostSetup();
-	
+
 	for LifeCycle {
 		PreLoop();
-		
-		cout << IsKeyPressed('Q') << endl;
-		
+
+		cout << IsKeyPressed(CSK_Esc) << endl;
+
 		PostLoop();
 	}
-	
+
 	DeconstructWindow();
 }
 
