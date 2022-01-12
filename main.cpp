@@ -4,6 +4,7 @@
 #include "./CppComfortableLibrary/MathTools.h"
 #include "./CppComfortableLibrary/ThreeD.h"
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
+#include "./CppComfortableLibrary/QuickMouse.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
@@ -54,21 +55,6 @@
 //	DestructWindow();
 //}
 
-struct MouseState{
-	int x;
-	int y;
-	bool lPressed;
-	bool mPressed;
-	bool rPressed;
-};
-
-MouseState mouseState = {0};
-
-void ShowMouseState(){
-	cout << "MouseX: " << mouseState.x << "; MouseY: " << mouseState.y << "; LMR: " << mouseState.lPressed << mouseState.mPressed << mouseState.rPressed << endl;
-}
-
-int count = 10;
 
 int main(){
 	ConstructWindow(WIDTH, HEIGHT);
@@ -77,11 +63,9 @@ int main(){
 	PostSetup();
 
 	for LifeCycle {
+		UpdateMouseState();
 		PreLoop();
-
-		mousepos(&(mouseState.x), &(mouseState.y));
-		mouseState.lPressed = IsKeyPressed(CSK_LButton);
-		mouseState.rPressed = IsKeyPressed(CSK_RButton);
+		
 		ShowMouseState();
 
 		PostLoop();

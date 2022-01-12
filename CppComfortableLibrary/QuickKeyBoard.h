@@ -1,7 +1,7 @@
 #ifndef __CppComfortable_QuickKeyBoard_H__
 #define __CppComfortable_QuickKeyBoard_H__
 
-#include <graphics.h>
+#include <Windows.h>
 
 #define IsKeyPressed(VK_NONAME) ( (GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1 : 0 )
 
@@ -11,6 +11,7 @@
 
 #define CSK_LButton                 1
 #define CSK_RButton                 2
+#define CSK_MButton                 4
 
 #define CSK_Esc                     27
 #define CSK_F1                      112
