@@ -231,3 +231,140 @@ void ShowCamera(float* cam){
 		 << "; Rot3: " << cam[3] << "; Rot4: " << cam[4] << "; Rot5:" << cam[5] << endl;
 }
 
+//void DrawTriangle(const FVectorTex& v0_, const FVectorTex& v1_, const FVectorTex& v2_, CS_FrameBuffer& texture){
+//	// Sort Y Order
+//	FVectorTex *v0ptr = (FVectorTex*)&v0_;
+//	FVectorTex *v1ptr = (FVectorTex*)&v1_;
+//	FVectorTex *v2ptr = (FVectorTex*)&v2_;
+//	if(v0ptr->pos.y > v1ptr->pos.y) swap(v0ptr, v1ptr);
+//	if(v0ptr->pos.y > v2ptr->pos.y) swap(v0ptr, v2ptr);
+//	if(v1ptr->pos.y > v2ptr->pos.y) swap(v1ptr, v2ptr);
+//	
+//	// Natural Flat Triangle
+//	if(v1ptr->pos.y == v2ptr->pos.y){
+//		// ptrfb->PrintLn("Flat Bottom Triangle");
+//		if(v1ptr->pos.x > v2ptr->pos.x) swap(v1ptr, v2ptr);
+//		DrawFlatBottomTriangle(
+//			*v0ptr, *v1ptr, *v2ptr,
+//			texture
+//			);
+//		return;
+//	}
+//	
+//	if(v0ptr->pos.y == v1ptr->pos.y){
+//		// ptrfb->PrintLn("Flat Top Triangle");
+//		if(v0ptr->pos.x > v1ptr->pos.x) swap(v0ptr, v1ptr);
+//		DrawFlatTopTriangle(
+//			*v0ptr, *v1ptr, *v2ptr,
+//			texture
+//			);
+//		return;
+//	}
+//	
+//	// Normal Triangle
+//	FVectorTex v0 = *v0ptr;
+//	FVectorTex v1 = *v1ptr;
+//	FVectorTex v2 = *v2ptr;
+//	
+//	f32 m = v1.pos.y - v0.pos.y;
+//	f32 n = v2.pos.y - v0.pos.y;
+//	FVectorTex vcenter = v0.InterpolateTo(v2, m / n);
+//	
+//	if(vcenter.pos.x < v1.pos.x){
+//		// ptrfb->PrintLn("Longside Left Triangle");
+//		DrawFlatBottomTriangle(
+//			v0, vcenter, v1,
+//			texture
+//			);
+//		DrawFlatTopTriangle(
+//			vcenter, v1, v2,
+//			texture
+//			);
+//	}
+//	
+//	else{
+//		// ptrfb->PrintLn("Longside Right Triangle");
+//		DrawFlatBottomTriangle(
+//			v0, v1, vcenter,
+//			texture
+//			);
+//		DrawFlatTopTriangle(
+//			v1, vcenter, v2,
+//			texture
+//			);
+//	}
+//	
+//}
+//
+//void DrawFlatBottomTriangle(const FVectorTex& v0_, const FVectorTex& v1_, const FVectorTex& v2_, CS_FrameBuffer& texture){
+//	const f32& yTop    = v0_.pos.y;
+//	const f32& yBottom = v2_.pos.y;
+//	
+//	FVectorTex xLeftStep  = (v1_ - v0_) / (yBottom - yTop);
+//	FVectorTex xRightStep = (v2_ - v0_) / (yBottom - yTop);
+//	
+//	DrawFlatTriangle(
+//		ceil(yTop - 0.5f),
+//		ceil(yBottom - 0.5f),
+//		v0_ + (ceil(yTop - 0.5f) + 0.5f - yTop) * xLeftStep,   // xLeft  with Pre-stepping
+//		v0_ + (ceil(yTop - 0.5f) + 0.5f - yTop) * xRightStep,  // xRight with Pre-stepping
+//		xLeftStep,
+//		xRightStep,
+//		texture
+//		);
+//}
+//
+//void DrawFlatTopTriangle(const FVectorTex& v0_, const FVectorTex& v1_, const FVectorTex& v2_, CS_FrameBuffer& texture){
+//	const f32& yTop    = v0_.pos.y;
+//	const f32& yBottom = v2_.pos.y;
+//	
+//	FVectorTex xLeftStep  = (v2_ - v0_) / (yBottom - yTop);
+//	FVectorTex xRightStep = (v2_ - v1_) / (yBottom - yTop);
+//	
+//	DrawFlatTriangle(
+//		ceil(yTop - 0.5f),
+//		ceil(yBottom - 0.5f),
+//		v0_ + (ceil(yTop - 0.5f) + 0.5f - yTop) * xLeftStep,   // xLeft  with Pre-stepping
+//		v1_ + (ceil(yTop - 0.5f) + 0.5f - yTop) * xRightStep,  // xRight with Pre-stepping
+//		xLeftStep,
+//		xRightStep,
+//		texture
+//		);
+//}
+//
+//void DrawFlatTriangle(i32 yTop, i32 yBottom, FVectorTex xLeft, FVectorTex xRight, const FVectorTex& xLeftStep, const FVectorTex& xRightStep, CS_FrameBuffer& texture)
+//{
+//	for (i32 y = yTop; y < yBottom; y++) {
+//		
+//		i32 xLeftInt  = ceil(xLeft.pos.x  - 0.5f);
+//		i32 xRightInt = ceil(xRight.pos.x - 0.5f);
+//		
+//		FVectorTex xNowStep = (xRight - xLeft) / (xRight.pos.x - xLeft.pos.x);
+//		FVectorTex xNow = xLeft;
+//		xNow = xNow + ((float)xLeftInt + 0.5f - xLeft.pos.x) * xNowStep;  // Pre-stepping
+//		
+//		for (i32 x = xLeftInt; x < xRightInt; x++) {
+//			f32& zbPos = zb.bufptr[((i32)xNow.pos.y * zb.width + (i32)xNow.pos.x)];
+//			
+//			if(zbPos < xNow.pos.z){
+//				i32 position = CS_iclamp(0, xNow.tex.y * texture.width,  texture.height - 1) *
+//				texture.width +
+//				CS_iclamp(0, xNow.tex.x * texture.height, texture.width  - 1);
+//				
+//				CS_PutPixel(
+//					*ptrfb, xNow.pos.x, xNow.pos.y,
+//					texture.redBuffer   [position],
+//					texture.greenBuffer [position],
+//					texture.blueBuffer  [position]
+//					);
+//				zbPos = xNow.pos.z;
+//			}
+//			
+//			xNow += xNowStep;
+//		}
+//		
+//		xLeft += xLeftStep;
+//		xRight += xRightStep;
+//	}
+//}
+
