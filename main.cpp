@@ -54,8 +54,6 @@
 //	DestructWindow();
 //}
 
-mouse_msg msg = {0};
-
 struct MouseState{
 	int x;
 	int y;
@@ -81,26 +79,11 @@ int main(){
 	for LifeCycle {
 		PreLoop();
 
-		// Initialization
-		msg = mouse_msg();
+		mousepos(&(mouseState.x), &(mouseState.y));
+		mouseState.lPressed = IsKeyPressed(CSK_LButton);
+		mouseState.rPressed = IsKeyPressed(CSK_RButton);
+		ShowMouseState();
 
-		if(mousemsg()){
-			msg = getmouse();
-			mouseState.x = msg.x;
-			mouseState.y = msg.y;
-			mouseState.lPressed = msg.is_left();
-			mouseState.rPressed = msg.is_right();
-			mouseState.mPressed = msg.is_mid();
-		}
-		
-		count -= 1;
-		
-		if(count == 0){
-			count = 10;
-			ShowMouseState();
-		}
-
-		
 		PostLoop();
 	}
 

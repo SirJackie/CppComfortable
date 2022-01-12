@@ -3,11 +3,14 @@
 
 #include <graphics.h>
 
-#define IsKeyPressed(CSK) keystate(CSK)
+#define IsKeyPressed(VK_NONAME) ( (GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1 : 0 )
 
 /*
  ** Unique Cross-platformed Global Keyboard Index Declaration
  */
+
+#define CSK_LButton                 1
+#define CSK_RButton                 2
 
 #define CSK_Esc                     27
 #define CSK_F1                      112
