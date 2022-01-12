@@ -4,6 +4,8 @@
 #include <iostream>
 #include <graphics.h>
 #include "QuickKeyBoard.h"
+#include "FocusingWindowGetter.h"
+
 using std::cout;
 using std::endl;
 
@@ -14,7 +16,7 @@ public:
 	bool lPressed;
 	bool mPressed;
 	bool rPressed;
-	
+
 	// Constructor
 	MouseState();
 };

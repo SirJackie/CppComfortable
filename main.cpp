@@ -67,14 +67,7 @@ int main(){
 		UpdateMouseState();
 		PreLoop();
 
-//		ShowMouseState();
-
-		if(IsEGEWindowFocused()){
-			cout << "Active" << endl;
-		}
-		else{
-			cout << "Not Active" << endl;
-		}
+		ShowMouseState();
 
 		PostLoop();
 	}

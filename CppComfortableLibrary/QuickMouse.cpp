@@ -1,5 +1,10 @@
 #include "QuickMouse.h"
 
+#include <iostream>
+#include <graphics.h>
+#include "QuickKeyBoard.h"
+#include "FocusingWindowGetter.h"
+
 MouseState mouseState;
 
 MouseState::MouseState(){
@@ -16,8 +21,10 @@ void ShowMouseState(){
 
 void UpdateMouseState(){
 	mousepos(&(mouseState.x), &(mouseState.y));
-	mouseState.lPressed = IsKeyPressed(CSK_LButton);
-	mouseState.rPressed = IsKeyPressed(CSK_RButton);
-	mouseState.mPressed = IsKeyPressed(CSK_MButton);
+	if(IsEGEWindowFocused()){
+		mouseState.lPressed = IsKeyPressed(CSK_LButton);
+		mouseState.rPressed = IsKeyPressed(CSK_RButton);
+		mouseState.mPressed = IsKeyPressed(CSK_MButton);
+	}
 }
 
