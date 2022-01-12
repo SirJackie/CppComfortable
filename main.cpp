@@ -5,6 +5,7 @@
 #include "./CppComfortableLibrary/ThreeD.h"
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
 #include "./CppComfortableLibrary/QuickMouse.h"
+#include "./CppComfortableLibrary/FocusingWindowGetter.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
@@ -65,8 +66,15 @@ int main(){
 	for LifeCycle {
 		UpdateMouseState();
 		PreLoop();
-		
-		ShowMouseState();
+
+//		ShowMouseState();
+
+		if(IsEGEWindowFocused()){
+			cout << "Active" << endl;
+		}
+		else{
+			cout << "Not Active" << endl;
+		}
 
 		PostLoop();
 	}
