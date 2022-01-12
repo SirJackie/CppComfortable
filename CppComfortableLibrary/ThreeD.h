@@ -23,6 +23,10 @@ void GetForwardVector(float* cam, float* optForwardVector_Float3Lst);
 void GetRightVector(float* cam, float* optRightVector_Float3Lst);
 void GetUpVector(float* cam, float* optUpVector_Float3Lst);
 
+void GetWalkingForwardVector(float* cam, float* optForwardVector_Float3Lst);
+void GetWalkingRightVector(float* cam, float* optRightVector_Float3Lst);
+void GetWalkingUpVector(float* cam, float* optUpVector_Float3Lst);
+
 void BatchCopyBuf(float* xBuf, float* yBuf, float* zBuf, float* newXBuf, float* newYBuf, float* newZBuf, int length);
 void BatchShowBuf(float* xBuf, float* yBuf, float* zBuf, int length);
 void BatchDrawBuf(float* xBuf, float* yBuf, float* zBuf, int length, int screenWidth, int screenHeight);
