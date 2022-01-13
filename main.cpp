@@ -25,7 +25,7 @@ float cam[6] = {-0.0f, 0.0f, -5.0f, 0.0f, 0.0f, 0.0f};
 void loop() {
 
 	// Mouse Processing
-	ShowMouseState();
+	// ShowMouseState();
 
 	// 3D Graphics Rendering
 	int bufLen = sizeof(xBuf) / sizeof(float);
@@ -33,7 +33,8 @@ void loop() {
 	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
 
 	KeyboardlizeCamera(cam, 0.05f, 1.0f);
-//	ShowCamera(cam);
+	MousilizeCamera(cam, 0.1f);
+	// ShowCamera(cam);
 
 	BatchTranslate(tXBuf, tYBuf, tZBuf, cam, bufLen);
 	BatchRotation(tXBuf, tYBuf, tZBuf, cam, bufLen);

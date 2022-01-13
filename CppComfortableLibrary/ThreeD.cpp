@@ -227,8 +227,10 @@ void KeyboardlizeCamera(float* cam, float moveSpeed, float rotateSpeed){
 }
 
 void MousilizeCamera(float* cam, float sensitivity){
-	cam[4] += mouseState.x * sensitivity;
-	cam[3] += mouseState.y * sensitivity;
+	if(mouseState.lPressed){
+		cam[3] += mouseState.deltaX * sensitivity;
+		cam[4] -= mouseState.deltaY * sensitivity;
+	}
 }
 
 void ShowCamera(float* cam){
