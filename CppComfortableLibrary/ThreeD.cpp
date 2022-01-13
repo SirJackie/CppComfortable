@@ -72,11 +72,11 @@ void GetUpVector(float* cam, float* optUpVector_Float3Lst){
 
 void GetWalkingForwardVector(float* cam, float* optForwardVector_Float3Lst){
 	float x = 0, y = 0, z = 1;
-	
+
 //	XYRot(&x, &y, cam[5]);
 	XZRot(&x, &z, cam[3]);
 //	ZYRot(&y, &z, cam[4]);
-	
+
 	optForwardVector_Float3Lst[0] = x;
 	optForwardVector_Float3Lst[1] = y;
 	optForwardVector_Float3Lst[2] = z;
@@ -84,11 +84,11 @@ void GetWalkingForwardVector(float* cam, float* optForwardVector_Float3Lst){
 
 void GetWalkingRightVector(float* cam, float* optRightVector_Float3Lst){
 	float x = 1, y = 0, z = 0;
-	
+
 //	XYRot(&x, &y, cam[5]);
 	XZRot(&x, &z, cam[3]);
 //	ZYRot(&y, &z, cam[4]);
-	
+
 	optRightVector_Float3Lst[0] = x;
 	optRightVector_Float3Lst[1] = y;
 	optRightVector_Float3Lst[2] = z;
@@ -96,11 +96,11 @@ void GetWalkingRightVector(float* cam, float* optRightVector_Float3Lst){
 
 void GetWalkingUpVector(float* cam, float* optUpVector_Float3Lst){
 	float x = 0, y = 1, z = 0;
-	
+
 //	XYRot(&x, &y, cam[5]);
 	XZRot(&x, &z, cam[3]);
 //	ZYRot(&y, &z, cam[4]);
-	
+
 	optUpVector_Float3Lst[0] = x;
 	optUpVector_Float3Lst[1] = y;
 	optUpVector_Float3Lst[2] = z;
@@ -226,6 +226,11 @@ void KeyboardlizeCamera(float* cam, float moveSpeed, float rotateSpeed){
 	}
 }
 
+void MousilizeCamera(float* cam, float sensitivity){
+	cam[4] += mouseState.x * sensitivity;
+	cam[3] += mouseState.y * sensitivity;
+}
+
 void ShowCamera(float* cam){
 	cout << "CamX: " << cam[0] << "; CamY: " << cam[1] << "; CamZ: " << cam[2]
 		 << "; Rot3: " << cam[3] << "; Rot4: " << cam[4] << "; Rot5:" << cam[5] << endl;
@@ -239,7 +244,7 @@ void ShowCamera(float* cam){
 //	if(v0ptr->pos.y > v1ptr->pos.y) swap(v0ptr, v1ptr);
 //	if(v0ptr->pos.y > v2ptr->pos.y) swap(v0ptr, v2ptr);
 //	if(v1ptr->pos.y > v2ptr->pos.y) swap(v1ptr, v2ptr);
-//	
+//
 //	// Natural Flat Triangle
 //	if(v1ptr->pos.y == v2ptr->pos.y){
 //		// ptrfb->PrintLn("Flat Bottom Triangle");
@@ -250,7 +255,7 @@ void ShowCamera(float* cam){
 //			);
 //		return;
 //	}
-//	
+//
 //	if(v0ptr->pos.y == v1ptr->pos.y){
 //		// ptrfb->PrintLn("Flat Top Triangle");
 //		if(v0ptr->pos.x > v1ptr->pos.x) swap(v0ptr, v1ptr);
@@ -260,16 +265,16 @@ void ShowCamera(float* cam){
 //			);
 //		return;
 //	}
-//	
+//
 //	// Normal Triangle
 //	FVectorTex v0 = *v0ptr;
 //	FVectorTex v1 = *v1ptr;
 //	FVectorTex v2 = *v2ptr;
-//	
+//
 //	f32 m = v1.pos.y - v0.pos.y;
 //	f32 n = v2.pos.y - v0.pos.y;
 //	FVectorTex vcenter = v0.InterpolateTo(v2, m / n);
-//	
+//
 //	if(vcenter.pos.x < v1.pos.x){
 //		// ptrfb->PrintLn("Longside Left Triangle");
 //		DrawFlatBottomTriangle(
@@ -281,7 +286,7 @@ void ShowCamera(float* cam){
 //			texture
 //			);
 //	}
-//	
+//
 //	else{
 //		// ptrfb->PrintLn("Longside Right Triangle");
 //		DrawFlatBottomTriangle(
@@ -293,16 +298,16 @@ void ShowCamera(float* cam){
 //			texture
 //			);
 //	}
-//	
+//
 //}
 //
 //void DrawFlatBottomTriangle(const FVectorTex& v0_, const FVectorTex& v1_, const FVectorTex& v2_, CS_FrameBuffer& texture){
 //	const f32& yTop    = v0_.pos.y;
 //	const f32& yBottom = v2_.pos.y;
-//	
+//
 //	FVectorTex xLeftStep  = (v1_ - v0_) / (yBottom - yTop);
 //	FVectorTex xRightStep = (v2_ - v0_) / (yBottom - yTop);
-//	
+//
 //	DrawFlatTriangle(
 //		ceil(yTop - 0.5f),
 //		ceil(yBottom - 0.5f),
@@ -317,10 +322,10 @@ void ShowCamera(float* cam){
 //void DrawFlatTopTriangle(const FVectorTex& v0_, const FVectorTex& v1_, const FVectorTex& v2_, CS_FrameBuffer& texture){
 //	const f32& yTop    = v0_.pos.y;
 //	const f32& yBottom = v2_.pos.y;
-//	
+//
 //	FVectorTex xLeftStep  = (v2_ - v0_) / (yBottom - yTop);
 //	FVectorTex xRightStep = (v2_ - v1_) / (yBottom - yTop);
-//	
+//
 //	DrawFlatTriangle(
 //		ceil(yTop - 0.5f),
 //		ceil(yBottom - 0.5f),
@@ -335,22 +340,22 @@ void ShowCamera(float* cam){
 //void DrawFlatTriangle(i32 yTop, i32 yBottom, FVectorTex xLeft, FVectorTex xRight, const FVectorTex& xLeftStep, const FVectorTex& xRightStep, CS_FrameBuffer& texture)
 //{
 //	for (i32 y = yTop; y < yBottom; y++) {
-//		
+//
 //		i32 xLeftInt  = ceil(xLeft.pos.x  - 0.5f);
 //		i32 xRightInt = ceil(xRight.pos.x - 0.5f);
-//		
+//
 //		FVectorTex xNowStep = (xRight - xLeft) / (xRight.pos.x - xLeft.pos.x);
 //		FVectorTex xNow = xLeft;
 //		xNow = xNow + ((float)xLeftInt + 0.5f - xLeft.pos.x) * xNowStep;  // Pre-stepping
-//		
+//
 //		for (i32 x = xLeftInt; x < xRightInt; x++) {
 //			f32& zbPos = zb.bufptr[((i32)xNow.pos.y * zb.width + (i32)xNow.pos.x)];
-//			
+//
 //			if(zbPos < xNow.pos.z){
 //				i32 position = CS_iclamp(0, xNow.tex.y * texture.width,  texture.height - 1) *
 //				texture.width +
 //				CS_iclamp(0, xNow.tex.x * texture.height, texture.width  - 1);
-//				
+//
 //				CS_PutPixel(
 //					*ptrfb, xNow.pos.x, xNow.pos.y,
 //					texture.redBuffer   [position],
@@ -359,10 +364,10 @@ void ShowCamera(float* cam){
 //					);
 //				zbPos = xNow.pos.z;
 //			}
-//			
+//
 //			xNow += xNowStep;
 //		}
-//		
+//
 //		xLeft += xLeftStep;
 //		xRight += xRightStep;
 //	}

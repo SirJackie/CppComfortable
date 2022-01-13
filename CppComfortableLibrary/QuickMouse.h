@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <graphics.h>
+#include <cmath>
 #include "QuickKeyBoard.h"
 #include "FocusingWindowGetter.h"
 
@@ -13,9 +14,17 @@ class MouseState{
 public:
 	int x;
 	int y;
+	
+	int deltaX;
+	int deltaY;
+	
 	bool lPressed;
 	bool mPressed;
 	bool rPressed;
+	
+private:
+	int lastX;
+	int lastY;
 
 	// Constructor
 	MouseState();

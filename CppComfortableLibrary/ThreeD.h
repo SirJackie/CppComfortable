@@ -5,6 +5,7 @@
 #include "FrameBufferTools.h"
 #include "ConsoleTools.h"
 #include "QuickKeyBoard.h"
+#include "QuickMouse.h"
 
 // ar for Aspect Ratio
 // sw for Screen Width
@@ -38,6 +39,7 @@ void BatchTranslate(float* xBuf, float* yBuf, float* zBuf, float* cam, int lengt
 void BatchRotation(float* xBuf, float* yBuf, float* zBuf, float* cam, int length);
 
 void KeyboardlizeCamera(float* cam, float moveSpeed, float rotateSpeed);
+void MousilizeCamera(float* cam, float sensitivity);
 void ShowCamera(float* cam);
 
 #endif
