@@ -14,17 +14,14 @@ class MouseState{
 public:
 	int x;
 	int y;
-	
 	int deltaX;
 	int deltaY;
-	
+	int lastX;
+	int lastY;
+
 	bool lPressed;
 	bool mPressed;
 	bool rPressed;
-	
-private:
-	int lastX;
-	int lastY;
 
 	// Constructor
 	MouseState();

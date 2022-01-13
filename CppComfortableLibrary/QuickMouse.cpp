@@ -30,18 +30,18 @@ void ShowMouseState(){
 void UpdateMouseState(){
 	mousepos(&(mouseState.x), &(mouseState.y));
 
-	if(lastX == NAN || lastY == NAN){
-		lastX = x;
-		lastY = y;
-		deltaX = 0;
-		deltaY = 0;
+	if(mouseState.lastX == NAN || mouseState.lastY == NAN){
+		mouseState.lastX = mouseState.x;
+		mouseState.lastY = mouseState.y;
+		mouseState.deltaX = 0;
+		mouseState.deltaY = 0;
 	}
 	else{
-		deltaX = x - lastX;
-		deltaY = y - lastY;
+		mouseState.deltaX = mouseState.x - mouseState.lastX;
+		mouseState.deltaY = mouseState.y - mouseState.lastY;
 		// Prepare Last X & Y for the next frame
-		lastX = x;
-		lastY = y;
+		mouseState.lastX = mouseState.x;
+		mouseState.lastY = mouseState.y;
 	}
 
 	if(IsEGEWindowFocused()){
