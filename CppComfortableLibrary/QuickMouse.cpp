@@ -4,7 +4,7 @@
 #include <graphics.h>
 #include <cmath>
 #include "QuickKeyBoard.h"
-#include "FocusingWindowGetter.h"
+#include "WindowHelper.h"
 
 MouseState mouseState;
 

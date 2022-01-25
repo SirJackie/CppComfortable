@@ -5,7 +5,7 @@
 #include "./CppComfortableLibrary/ThreeD.h"
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
 #include "./CppComfortableLibrary/QuickMouse.h"
-#include "./CppComfortableLibrary/FocusingWindowGetter.h"
+#include "./CppComfortableLibrary/WindowHelper.h"
 #include <windows.h>
 
 #define WIDTH 1024
@@ -48,10 +48,10 @@ void loop() {
 
 int main() {
 	ConstructWindow(WIDTH, HEIGHT);
-	
+
 //	HWND activeWindow = GetForegroundWindow();
 	HWND egeWindow = getHWnd();
-	
+
 	LONG wndStyle = ::GetWindowLong(egeWindow, GWL_STYLE);
 	wndStyle &= ~(WS_CAPTION);
 	::SetWindowLong(egeWindow, GWL_STYLE, wndStyle);

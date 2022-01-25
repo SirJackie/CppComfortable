@@ -5,7 +5,7 @@
 #include <graphics.h>
 #include <cmath>
 #include "QuickKeyBoard.h"
-#include "FocusingWindowGetter.h"
+#include "WindowHelper.h"
 
 using std::cout;
 using std::endl;
