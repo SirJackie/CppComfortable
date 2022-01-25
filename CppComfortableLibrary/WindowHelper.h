@@ -4,7 +4,9 @@
 #include <windows.h>
 #include <graphics.h>
 
+HWND GetEGEWindowHandler();
 bool IsEGEWindowFocused();
+void HideTitleBar();
 
 #endif
 

@@ -48,13 +48,7 @@ void loop() {
 
 int main() {
 	ConstructWindow(WIDTH, HEIGHT);
-
-//	HWND activeWindow = GetForegroundWindow();
-	HWND egeWindow = getHWnd();
-
-	LONG wndStyle = ::GetWindowLong(egeWindow, GWL_STYLE);
-	wndStyle &= ~(WS_CAPTION);
-	::SetWindowLong(egeWindow, GWL_STYLE, wndStyle);
+	HideTitleBar();
 
 	PreSetup();
 	setup();
