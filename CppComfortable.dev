@@ -255,7 +255,7 @@ FileEncoding = AUTO
 
 
 [Unit16]
-FileName = CppComfortableLibrary/FocusingWindowGetter.cpp
+FileName = CppComfortableLibrary/WindowHelper.cpp
 CompileCpp = 1
 Folder = CppComfortableLibrary
 Compile = 1
@@ -268,7 +268,7 @@ FileEncoding = AUTO
 
 
 [Unit17]
-FileName = CppComfortableLibrary/FocusingWindowGetter.h
+FileName = CppComfortableLibrary/WindowHelper.h
 CompileCpp = 0
 Folder = CppComfortableLibrary
 Compile = 0

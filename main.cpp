@@ -6,6 +6,7 @@
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
 #include "./CppComfortableLibrary/QuickMouse.h"
 #include "./CppComfortableLibrary/FocusingWindowGetter.h"
+#include <windows.h>
 
 #define WIDTH 1024
 #define HEIGHT 576
@@ -47,6 +48,13 @@ void loop() {
 
 int main() {
 	ConstructWindow(WIDTH, HEIGHT);
+	
+//	HWND activeWindow = GetForegroundWindow();
+	HWND egeWindow = getHWnd();
+	
+	LONG wndStyle = ::GetWindowLong(egeWindow, GWL_STYLE);
+	wndStyle &= ~(WS_CAPTION);
+	::SetWindowLong(egeWindow, GWL_STYLE, wndStyle);
 
 	PreSetup();
 	setup();
