@@ -13,13 +13,28 @@
 
 int x = 0;
 int y = 0;
+int speed = 1;
 
 void setup() {
 	;
 }
 
 void loop() {
-	SetPixel(x, y, WIDTH, CSRGB(255, 0, 0));
+	SaveScreenWidthForSetPixel(WIDTH);
+	SetPixel(x, y, CSRGB(255, 0, 0));
+
+	if(IsKeyPressed(CSK_W)){
+		y -= speed;
+	}
+	if(IsKeyPressed(CSK_S)){
+		y += speed;
+	}
+	if(IsKeyPressed(CSK_A)){
+		x -= speed;
+	}
+	if(IsKeyPressed(CSK_D)){
+		x += speed;
+	}
 }
 
 int main() {
