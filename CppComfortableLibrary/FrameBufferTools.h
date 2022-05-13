@@ -13,6 +13,9 @@ extern int screenWidthSaver;
 #define SaveScreenWidthForSetPixel(screenWidth_) (screenWidthSaver = screenWidth_)
 #define SetPixel(x, y, color) ( *( (int*)(frameBuffer + (((y * screenWidthSaver) + x) * 4)) ) = (int)color )
 
+extern int screenHeightSaver;
+#define SaveScreenHeightForSafeSetPixel(screenHeight_) (screenHeightSaver = screenHeight_)
+#define SafeSetPixel(x, y, color) (x >= 0 ? (x < screenWidthSaver ? (y >= 0 ? (y < screenHeightSaver ? (SetPixel(x, y, color)) : NULL) : NULL) : NULL) : NULL)
 
 #endif
 

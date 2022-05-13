@@ -21,7 +21,8 @@ void setup() {
 
 void loop() {
 	SaveScreenWidthForSetPixel(WIDTH);
-	SetPixel(x, y, CSRGB(255, 0, 0));
+	SaveScreenHeightForSafeSetPixel(HEIGHT);
+	SafeSetPixel(x, y, CSRGB(255, 0, 0));
 
 	if(IsKeyPressed(CSK_W)){
 		y -= speed;

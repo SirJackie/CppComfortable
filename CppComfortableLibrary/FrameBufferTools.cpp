@@ -1,6 +1,7 @@
 #include "FrameBufferTools.h"
 
 int screenWidthSaver = 0;
+int screenHeightSaver = 0;
 
 void FillRectangle(int x0, int y0, int x1, int y1, char r, char g, char b, int screenWidth){
 	for(int y = y0; y < y1; y++){
