@@ -11,44 +11,19 @@
 #define WIDTH 1024
 #define HEIGHT 576
 
+int x = 0;
+int y = 0;
+
 void setup() {
 	;
 }
 
-float xBuf[8] = {-1, 1, 1, -1, -1, 1, 1, -1};
-float yBuf[8] = {1, 1, -1, -1, 1, 1, -1, -1};
-float zBuf[8] = {-1, -1, -1, -1, 1, 1, 1, 1};
-
-float tXBuf[8], tYBuf[8], tZBuf[8];
-
-float cam[6] = {-0.0f, 0.0f, -5.0f, 0.0f, 0.0f, 0.0f};
-
 void loop() {
-
-	// Mouse Processing
-	// ShowMouseState();
-
-	// 3D Graphics Rendering
-	int bufLen = sizeof(xBuf) / sizeof(float);
-
-	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
-
-	KeyboardlizeCamera(cam, 0.05f, 1.0f);
-	MousilizeCamera(cam, 0.1f);
-	// ShowCamera(cam);
-
-	BatchTranslate(tXBuf, tYBuf, tZBuf, cam, bufLen);
-	BatchRotation(tXBuf, tYBuf, tZBuf, cam, bufLen);
-	BatchProject(tXBuf, tYBuf, tZBuf, bufLen);
-	BatchExpand(tXBuf, tYBuf, bufLen, 60.0f);
-	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
-
-	BatchDrawBuf(tXBuf, tYBuf, tZBuf, bufLen, WIDTH, HEIGHT);
+	SetPixel(x, y, WIDTH, CSRGB(255, 0, 0));
 }
 
 int main() {
 	ConstructWindow(WIDTH, HEIGHT);
-	HideTitleBar();
 
 	PreSetup();
 	setup();
