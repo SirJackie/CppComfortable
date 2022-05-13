@@ -11,30 +11,35 @@
 #define WIDTH 1024
 #define HEIGHT 576
 
-int x = 0;
-int y = 0;
-int speed = 1;
+int xStart = 0;
+int yStart = 0;
+int speed = 10;
 
 void setup() {
-	;
+	SaveScreenWidthForSetPixel(WIDTH);
+	SaveScreenHeightForSafeSetPixel(HEIGHT);
 }
 
 void loop() {
-	SaveScreenWidthForSetPixel(WIDTH);
-	SaveScreenHeightForSafeSetPixel(HEIGHT);
-	SafeSetPixel(x, y, CSRGB(255, 0, 0));
-
+	int xEnd = xStart + 500;
+	int yEnd = yStart + 500;
+	for (int y = yStart; y < yEnd; y++){
+		for (int x = xStart; x < xEnd; x++){
+			SafeSetPixel(x, y, CSRGB(255, 0, 0));
+		}
+	}
+	
 	if(IsKeyPressed(CSK_W)){
-		y -= speed;
+		yStart -= speed;
 	}
 	if(IsKeyPressed(CSK_S)){
-		y += speed;
+		yStart += speed;
 	}
 	if(IsKeyPressed(CSK_A)){
-		x -= speed;
+		xStart -= speed;
 	}
 	if(IsKeyPressed(CSK_D)){
-		x += speed;
+		xStart += speed;
 	}
 }
 
