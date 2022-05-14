@@ -6,6 +6,7 @@
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
 #include "./CppComfortableLibrary/QuickMouse.h"
 #include "./CppComfortableLibrary/WindowHelper.h"
+#include "./CppComfortableLibrary/UITools.h"
 #include <windows.h>
 
 #define WIDTH 1024
@@ -23,11 +24,7 @@ void setup() {
 }
 
 void loop() {
-	for (int y = yStart; y < yEnd; y++){
-		for (int x = xStart; x < xEnd; x++){
-			SafeSetPixel(x, y, CSRGB(255, 0, 0));
-		}
-	}
+	DrawBresenhamLine(xStart, yStart, xEnd, yEnd, CSRGB(255, 0, 0));
 
 	if(IsKeyPressed(CSK_W)){
 		yStart -= speed;
