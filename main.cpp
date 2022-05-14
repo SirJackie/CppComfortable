@@ -21,11 +21,11 @@ int speed = 3;
 void setup() {
 	SaveScreenWidthForSetPixel(WIDTH);
 	SaveScreenHeightForSafeSetPixel(HEIGHT);
-	
+
 }
 
 void loop() {
-	DrawBresenhamLine(xStart, yStart, xEnd, yEnd, CSRGB(255, 0, 0));
+	DrawBresenhamLine2(xStart, yStart, xEnd, yEnd, CSRGB(255, 0, 0));
 
 	if(IsKeyPressed(CSK_W)){
 		yStart -= speed;
@@ -39,7 +39,7 @@ void loop() {
 	if(IsKeyPressed(CSK_D)){
 		xStart += speed;
 	}
-	
+
 	if(IsKeyPressed(CSK_I)){
 		yEnd -= speed;
 	}
