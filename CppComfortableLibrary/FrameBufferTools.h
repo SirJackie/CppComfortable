@@ -7,7 +7,7 @@
 void FillRectangle(int x0, int y0, int x1, int y1, char r, char g, char b, int screenWidth);
 void DrawPoint(int x, int y, int radius, char r, char g, char b, int screenWidth, int screenHeight);
 
-#define CSRGB(r, g, b) ( r << 16 | g << 8 | b | 0xFF << 24 )
+#define CSRGB(r, g, b) ( ((r&255) << 16) + ((g&255) << 8) + (b&255) )
 
 extern int screenWidthSaver;
 #define SaveScreenWidthForSetPixel(screenWidth_) (screenWidthSaver = screenWidth_)
