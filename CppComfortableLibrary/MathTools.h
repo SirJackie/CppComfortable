@@ -11,6 +11,8 @@ using std::asin;
 using std::acos;
 using std::atan;
 
+using std::abs;
+
 #define clamp(min, x, max) (x < min ? min : x >= max ? max - 1 : x)
 
 #define DEG2RAD (PI / 180.0f)
@@ -25,6 +27,8 @@ using std::atan;
 #define asind(x) (asin(x) * RAD2DEG)
 #define acosd(x) (acos(x) * RAD2DEG)
 #define atand(x) (atan(x) * RAD2DEG)
+
+void swap(int* x, int* y);
 
 #endif
 
