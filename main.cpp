@@ -25,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-	DrawBresenhamLine(xStart, yStart, xEnd, yEnd, CSRGB(255, 0, 65535));
+	DrawBresenhamLine(xStart, yStart, xEnd, yEnd, CSRGB(255, 0, 0));
 
 	if(IsKeyPressed(CSK_W)){
 		yStart -= speed;
