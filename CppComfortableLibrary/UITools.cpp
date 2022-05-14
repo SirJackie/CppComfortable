@@ -3,16 +3,28 @@
 void DrawBresenhamLine(int x0, int y0, int x1, int y1, int color){
 	
 	// Crucial Point: 45 - 90 deg adapter
+	// Operation: Swap X and Y
 	bool steep = abs(y1 - y0) > abs(x1 - x0);
 	if(steep){
 		swap(&x1, &y1);
 		swap(&x0, &y0);
 	}
 	
+	// Crucial Point: the 3rd quaderant adapter
+	// Operation: Swap End and Start
+	if(x0 > x1){
+		swap(&x1, &x0);
+		swap(&y1, &y0);
+	}
+	
 	int dx = x1 - x0;
-	int dy = y1 - y0;
+	int dy = abs(y1 - y0);
 	int y = y0;
 	int pk = 2 * dy - dx;  // Init value of decision parameter
+	
+	int stepy;
+	//ÎÊÌâ3
+	y0 > y1 ? stepy = -1 : stepy = 1;
 	
 	for(int x = x0; x < x1; x++){
 		if(steep){
@@ -28,7 +40,7 @@ void DrawBresenhamLine(int x0, int y0, int x1, int y1, int color){
 		}
 		else{                       // When pk >= 0
 			pk += 2 * dy - 2 * dx;  // pk+1 = pk + 2dy - 2dx;
-			y += 1;                 // yk+1 = yk + 1
+			y += stepy;             // yk+1 = yk + 1
 		}
 	}
 	

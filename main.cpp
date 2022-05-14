@@ -12,10 +12,10 @@
 #define WIDTH 1024
 #define HEIGHT 576
 
-int xStart = 0;
-int yStart = 0;
-int xEnd = 500;
-int yEnd = 100;
+int xStart = 300;
+int yStart = 300;
+int xEnd = 400;
+int yEnd = 400;
 int speed = 3;
 
 void setup() {
