@@ -13,7 +13,9 @@
 
 int xStart = 0;
 int yStart = 0;
-int speed = 10;
+int xEnd = 500;
+int yEnd = 100;
+int speed = 3;
 
 void setup() {
 	SaveScreenWidthForSetPixel(WIDTH);
@@ -21,14 +23,12 @@ void setup() {
 }
 
 void loop() {
-	int xEnd = xStart + 500;
-	int yEnd = yStart + 500;
 	for (int y = yStart; y < yEnd; y++){
 		for (int x = xStart; x < xEnd; x++){
 			SafeSetPixel(x, y, CSRGB(255, 0, 0));
 		}
 	}
-	
+
 	if(IsKeyPressed(CSK_W)){
 		yStart -= speed;
 	}
@@ -40,6 +40,19 @@ void loop() {
 	}
 	if(IsKeyPressed(CSK_D)){
 		xStart += speed;
+	}
+	
+	if(IsKeyPressed(CSK_I)){
+		yEnd -= speed;
+	}
+	if(IsKeyPressed(CSK_K)){
+		yEnd += speed;
+	}
+	if(IsKeyPressed(CSK_J)){
+		xEnd -= speed;
+	}
+	if(IsKeyPressed(CSK_L)){
+		xEnd += speed;
 	}
 }
 
