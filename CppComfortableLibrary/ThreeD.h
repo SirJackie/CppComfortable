@@ -48,9 +48,24 @@ public:
 	int screenWidth;
 	int screenHeight;
 	float fovY;
-	
+
+private:
+	int vertexBufferLength;
+	float* xBuf;
+	float* yBuf;
+	float* zBuf;
+	float* txBuf;
+	float* tyBuf;
+	float* tzBuf;
+	float* cam;
+
+public:
 	ThreeDPipeline(int screenWidth_, int screenHeight_, float fovY_);
 	void ShowDebugInfo();
+	void AttachVertexBuffer(int length_, float* xBuf_, float* yBuf_, float* zBuf_);
+	void AttachTempBuffer(float* txBuf_, float* tyBuf_, float* tzBuf_);
+	void AttachCamera(float* cam_);
+	void ApplyVertexTransformation();
 };
 
 #endif

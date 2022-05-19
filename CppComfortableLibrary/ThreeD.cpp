@@ -239,9 +239,20 @@ void ShowCamera(float* cam){
 }
 
 ThreeDPipeline::ThreeDPipeline(int screenWidth_, int screenHeight_, float fovY_){
+	
+	// Init Public Properties
 	screenWidth = screenWidth_;
 	screenHeight = screenHeight_;
 	fovY = fovY_;
+	
+	// Init Private Properties
+	vertexBufferLength = 0;
+	xBuf = nullptr;
+	yBuf = nullptr;
+	zBuf = nullptr;
+	txBuf = nullptr;
+	tyBuf = nullptr;
+	tzBuf = nullptr;
 }
 
 void ThreeDPipeline::ShowDebugInfo(){
@@ -250,5 +261,30 @@ void ThreeDPipeline::ShowDebugInfo(){
 		 << "\tscreenHeight = " << screenHeight << endl
 		 << "\tfovY = " << fovY << endl
 		 << "}" << endl;
+}
+
+void ThreeDPipeline::AttachVertexBuffer(int length_, float* xBuf_, float* yBuf_, float* zBuf_){
+	vertexBufferLength = length_;
+	xBuf = xBuf_;
+	yBuf = yBuf_;
+	zBuf = zBuf_;
+}
+
+void ThreeDPipeline::AttachTempBuffer(float* txBuf_, float* tyBuf_, float* tzBuf_){
+	txBuf = txBuf_;
+	tyBuf = tyBuf_;
+	tzBuf = tzBuf_;
+}
+
+void ThreeDPipeline::AttachCamera(float* cam_){
+	cam = cam_;
+}
+
+void ThreeDPipeline::ApplyVertexTransformation(){
+	BatchTranslate(txBuf, tyBuf, tzBuf, cam, vertexBufferLength);
+	BatchRotation(txBuf, tyBuf, tzBuf, cam, vertexBufferLength);
+	BatchProject(txBuf, tyBuf, tzBuf, vertexBufferLength);
+	BatchExpand(txBuf, tyBuf, vertexBufferLength, fovY);
+	BatchPubelize(txBuf, tyBuf, vertexBufferLength, screenWidth, screenHeight);
 }
 
