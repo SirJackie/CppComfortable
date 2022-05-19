@@ -6,7 +6,7 @@
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
 #include "./CppComfortableLibrary/QuickMouse.h"
 #include "./CppComfortableLibrary/WindowHelper.h"
-#include <windows.h>
+#include "./CppComfortableLibrary/UITools.h"
 
 #define WIDTH 1024
 #define HEIGHT 576
