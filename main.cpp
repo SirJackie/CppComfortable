@@ -6,56 +6,49 @@
 #include "./CppComfortableLibrary/QuickKeyBoard.h"
 #include "./CppComfortableLibrary/QuickMouse.h"
 #include "./CppComfortableLibrary/WindowHelper.h"
-#include "./CppComfortableLibrary/UITools.h"
 #include <windows.h>
 
 #define WIDTH 1024
 #define HEIGHT 576
 
-int xStart = 300;
-int yStart = 300;
-int xEnd = 400;
-int yEnd = 400;
-int speed = 3;
-
 void setup() {
-	SaveScreenWidthForSetPixel(WIDTH);
-	SaveScreenHeightForSafeSetPixel(HEIGHT);
-
+	;
 }
 
+float xBuf[8] = {-1, 1, 1, -1, -1, 1, 1, -1};
+float yBuf[8] = {1, 1, -1, -1, 1, 1, -1, -1};
+float zBuf[8] = {-1, -1, -1, -1, 1, 1, 1, 1};
+
+float tXBuf[8], tYBuf[8], tZBuf[8];
+
+float cam[6] = {-0.0f, 0.0f, -5.0f, 0.0f, 0.0f, 0.0f};
+
 void loop() {
-	DrawBresenhamLine(xStart, yStart, xEnd, yEnd, CSRGB(255, 0, 0));
 
-	if(IsKeyPressed(CSK_W)){
-		yStart -= speed;
-	}
-	if(IsKeyPressed(CSK_S)){
-		yStart += speed;
-	}
-	if(IsKeyPressed(CSK_A)){
-		xStart -= speed;
-	}
-	if(IsKeyPressed(CSK_D)){
-		xStart += speed;
-	}
+	// Mouse Processing
+	// ShowMouseState();
 
-	if(IsKeyPressed(CSK_I)){
-		yEnd -= speed;
-	}
-	if(IsKeyPressed(CSK_K)){
-		yEnd += speed;
-	}
-	if(IsKeyPressed(CSK_J)){
-		xEnd -= speed;
-	}
-	if(IsKeyPressed(CSK_L)){
-		xEnd += speed;
-	}
+	// 3D Graphics Rendering
+	int bufLen = sizeof(xBuf) / sizeof(float);
+
+	BatchCopyBuf(xBuf, yBuf, zBuf, tXBuf, tYBuf, tZBuf, bufLen);
+
+	KeyboardlizeCamera(cam, 0.05f, 1.0f);
+	MousilizeCamera(cam, 0.1f);
+	// ShowCamera(cam);
+
+	BatchTranslate(tXBuf, tYBuf, tZBuf, cam, bufLen);
+	BatchRotation(tXBuf, tYBuf, tZBuf, cam, bufLen);
+	BatchProject(tXBuf, tYBuf, tZBuf, bufLen);
+	BatchExpand(tXBuf, tYBuf, bufLen, 60.0f);
+	BatchPubelize(tXBuf, tYBuf, bufLen, WIDTH, HEIGHT);
+
+	BatchDrawBuf(tXBuf, tYBuf, tZBuf, bufLen, WIDTH, HEIGHT);
 }
 
 int main() {
 	ConstructWindow(WIDTH, HEIGHT);
+	HideTitleBar();
 
 	PreSetup();
 	setup();
