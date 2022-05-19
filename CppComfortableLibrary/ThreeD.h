@@ -6,6 +6,7 @@
 #include "ConsoleTools.h"
 #include "QuickKeyBoard.h"
 #include "QuickMouse.h"
+#include "ConsoleTools.h"
 
 // ar for Aspect Ratio
 // sw for Screen Width
@@ -41,6 +42,16 @@ void BatchRotation(float* xBuf, float* yBuf, float* zBuf, float* cam, int length
 void KeyboardlizeCamera(float* cam, float moveSpeed, float rotateSpeed);
 void MousilizeCamera(float* cam, float sensitivity);
 void ShowCamera(float* cam);
+
+class ThreeDPipeline{
+public:
+	int screenWidth;
+	int screenHeight;
+	float fovY;
+	
+	ThreeDPipeline(int screenWidth_, int screenHeight_, float fovY_);
+	void ShowDebugInfo();
+};
 
 #endif
 

@@ -1,5 +1,5 @@
-#include "./CppComfortableLibrary/UILifeCycle.h"
 #include "./CppComfortableLibrary/ConsoleTools.h"
+#include "./CppComfortableLibrary/UILifeCycle.h"
 #include "./CppComfortableLibrary/FrameBufferTools.h"
 #include "./CppComfortableLibrary/MathTools.h"
 #include "./CppComfortableLibrary/ThreeD.h"
@@ -11,8 +11,10 @@
 #define WIDTH 1024
 #define HEIGHT 576
 
+ThreeDPipeline tdpp = ThreeDPipeline(WIDTH, HEIGHT, 60.0f);
+
 void setup() {
-	;
+	tdpp.ShowDebugInfo();
 }
 
 float xBuf[8] = {-1, 1, 1, -1, -1, 1, 1, -1};
